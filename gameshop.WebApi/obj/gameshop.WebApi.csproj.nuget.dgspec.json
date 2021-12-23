@@ -4,14 +4,14 @@
     "C:\\Studia\\PAWiM\\GameShop\\gameshop.WebApi\\gameshop.WebApi.csproj": {}
   },
   "projects": {
-    "C:\\Studia\\PAWiM\\GameShop\\gameshop.WebApi\\gameshop.WebApi.csproj": {
+    "C:\\Studia\\PAWiM\\GameShop\\gameshop.Core\\gameshop.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Studia\\PAWiM\\GameShop\\gameshop.WebApi\\gameshop.WebApi.csproj",
-        "projectName": "gameshop.WebApi",
-        "projectPath": "C:\\Studia\\PAWiM\\GameShop\\gameshop.WebApi\\gameshop.WebApi.csproj",
+        "projectUniqueName": "C:\\Studia\\PAWiM\\GameShop\\gameshop.Core\\gameshop.Core.csproj",
+        "projectName": "gameshop.Core",
+        "projectPath": "C:\\Studia\\PAWiM\\GameShop\\gameshop.Core\\gameshop.Core.csproj",
         "packagesPath": "C:\\Users\\rafal\\.nuget\\packages\\",
-        "outputPath": "C:\\Studia\\PAWiM\\GameShop\\gameshop.WebApi\\obj\\",
+        "outputPath": "C:\\Studia\\PAWiM\\GameShop\\gameshop.Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\rafal\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,6 +39,174 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.EntityFrameWorkCore": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.EntityFrameWorkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.EntityFrameWorkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.EntityFrameWorkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Studia\\PAWiM\\GameShop\\gameshop.Infrastructure\\gameshop.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Studia\\PAWiM\\GameShop\\gameshop.Infrastructure\\gameshop.Infrastructure.csproj",
+        "projectName": "gameshop.Infrastructure",
+        "projectPath": "C:\\Studia\\PAWiM\\GameShop\\gameshop.Infrastructure\\gameshop.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\rafal\\.nuget\\packages\\",
+        "outputPath": "C:\\Studia\\PAWiM\\GameShop\\gameshop.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\rafal\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "C:\\Studia\\PAWiM\\GameShop\\gameshop.Core\\gameshop.Core.csproj": {
+                "projectPath": "C:\\Studia\\PAWiM\\GameShop\\gameshop.Core\\gameshop.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.EntityFrameWorkCore": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Studia\\PAWiM\\GameShop\\gameshop.WebApi\\gameshop.WebApi.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Studia\\PAWiM\\GameShop\\gameshop.WebApi\\gameshop.WebApi.csproj",
+        "projectName": "gameshop.WebApi",
+        "projectPath": "C:\\Studia\\PAWiM\\GameShop\\gameshop.WebApi\\gameshop.WebApi.csproj",
+        "packagesPath": "C:\\Users\\rafal\\.nuget\\packages\\",
+        "outputPath": "C:\\Studia\\PAWiM\\GameShop\\gameshop.WebApi\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\rafal\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "C:\\Studia\\PAWiM\\GameShop\\gameshop.Infrastructure\\gameshop.Infrastructure.csproj": {
+                "projectPath": "C:\\Studia\\PAWiM\\GameShop\\gameshop.Infrastructure\\gameshop.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.EntityFrameWorkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

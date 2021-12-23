@@ -1,0 +1,16 @@
+C:\Studia\PAWiM\GameShop\gameshop.Infrastructure\obj\Debug\netcoreapp3.1\gameshop.Infrastructure.csproj.AssemblyReference.cache
+C:\Studia\PAWiM\GameShop\gameshop.Infrastructure\obj\Debug\netcoreapp3.1\gameshop.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Studia\PAWiM\GameShop\gameshop.Infrastructure\obj\Debug\netcoreapp3.1\gameshop.Infrastructure.AssemblyInfoInputs.cache
+C:\Studia\PAWiM\GameShop\gameshop.Infrastructure\obj\Debug\netcoreapp3.1\gameshop.Infrastructure.AssemblyInfo.cs
+C:\Studia\PAWiM\GameShop\gameshop.Infrastructure\obj\Debug\netcoreapp3.1\gameshop.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Studia\PAWiM\GameShop\gameshop.Infrastructure\bin\Debug\netcoreapp3.1\gameshop.Infrastructure.deps.json
+C:\Studia\PAWiM\GameShop\gameshop.Infrastructure\bin\Debug\netcoreapp3.1\gameshop.Infrastructure.runtimeconfig.json
+C:\Studia\PAWiM\GameShop\gameshop.Infrastructure\bin\Debug\netcoreapp3.1\gameshop.Infrastructure.runtimeconfig.dev.json
+C:\Studia\PAWiM\GameShop\gameshop.Infrastructure\bin\Debug\netcoreapp3.1\gameshop.Infrastructure.dll
+C:\Studia\PAWiM\GameShop\gameshop.Infrastructure\bin\Debug\netcoreapp3.1\gameshop.Infrastructure.pdb
+C:\Studia\PAWiM\GameShop\gameshop.Infrastructure\bin\Debug\netcoreapp3.1\gameshop.Core.dll
+C:\Studia\PAWiM\GameShop\gameshop.Infrastructure\bin\Debug\netcoreapp3.1\gameshop.Core.pdb
+C:\Studia\PAWiM\GameShop\gameshop.Infrastructure\obj\Debug\netcoreapp3.1\gameshop.Infrastructure.csproj.CopyComplete
+C:\Studia\PAWiM\GameShop\gameshop.Infrastructure\obj\Debug\netcoreapp3.1\gameshop.Infrastructure.dll
+C:\Studia\PAWiM\GameShop\gameshop.Infrastructure\obj\Debug\netcoreapp3.1\gameshop.Infrastructure.pdb
+C:\Studia\PAWiM\GameShop\gameshop.Infrastructure\obj\Debug\netcoreapp3.1\gameshop.Infrastructure.genruntimeconfig.cache
