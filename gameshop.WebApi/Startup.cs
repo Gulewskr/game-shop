@@ -1,4 +1,6 @@
+using gameshop.Core.Repositories;
 using gameshop.Infrastructure.Repositories;
+using gameshop.Infrastructure.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,6 +30,35 @@ namespace gameshop.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            //Category
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<ICategoryService, CategoryService>();
+            //Cart
+            services.AddScoped<ICatRepository, CatRepository>();
+            services.AddScoped<ICartService, CartService>();
+            //Order
+            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IOrderService, OrderService>();
+            //Developer
+            services.AddScoped<IDeveloperRepository, DeveloperRepository>();
+            services.AddScoped<IDeveloperService, DeveloperService>();
+            //Publisher
+            services.AddScoped<IPublisherRepository, PublisherRepository>();
+            services.AddScoped<IPublisherService, PublisherService>();
+            //Platform
+            services.AddScoped<IPlatformRepository, PlatformRepository>();
+            services.AddScoped<IPlatformService, PlatformService>();
+            //Games
+            services.AddScoped<IGameRepository, GameRepository>();
+            services.AddScoped<IGameByPlatformRepository, IGameByPlatformRepository>();
+            services.AddScoped<IGameService, GameService>();
+            //Users
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserService, UserService>();
+            //Passwords
+            services.AddScoped<IPasswordRepository, PasswordRepository>();
+            services.AddScoped<IPasswordService, PasswordService>();
+
             services.AddDbContext<AppDbContext>(
                 options =>
                 {

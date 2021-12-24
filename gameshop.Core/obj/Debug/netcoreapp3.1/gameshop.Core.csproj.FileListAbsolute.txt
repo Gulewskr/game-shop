@@ -1,6 +1,4 @@
 C:\Studia\PAWiM\GameShop\gameshop.Core\bin\Debug\netcoreapp3.1\gameshop.Core.deps.json
-C:\Studia\PAWiM\GameShop\gameshop.Core\bin\Debug\netcoreapp3.1\gameshop.Core.runtimeconfig.json
-C:\Studia\PAWiM\GameShop\gameshop.Core\bin\Debug\netcoreapp3.1\gameshop.Core.runtimeconfig.dev.json
 C:\Studia\PAWiM\GameShop\gameshop.Core\bin\Debug\netcoreapp3.1\gameshop.Core.dll
 C:\Studia\PAWiM\GameShop\gameshop.Core\bin\Debug\netcoreapp3.1\gameshop.Core.pdb
 C:\Studia\PAWiM\GameShop\gameshop.Core\obj\Debug\netcoreapp3.1\gameshop.Core.csproj.AssemblyReference.cache
@@ -10,4 +8,3 @@ C:\Studia\PAWiM\GameShop\gameshop.Core\obj\Debug\netcoreapp3.1\gameshop.Core.Ass
 C:\Studia\PAWiM\GameShop\gameshop.Core\obj\Debug\netcoreapp3.1\gameshop.Core.csproj.CoreCompileInputs.cache
 C:\Studia\PAWiM\GameShop\gameshop.Core\obj\Debug\netcoreapp3.1\gameshop.Core.dll
 C:\Studia\PAWiM\GameShop\gameshop.Core\obj\Debug\netcoreapp3.1\gameshop.Core.pdb
-C:\Studia\PAWiM\GameShop\gameshop.Core\obj\Debug\netcoreapp3.1\gameshop.Core.genruntimeconfig.cache

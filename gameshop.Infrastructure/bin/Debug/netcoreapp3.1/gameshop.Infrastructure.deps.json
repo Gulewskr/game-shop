@@ -1086,8 +1086,7 @@
       },
       "gameshop.Core/1.0.0": {
         "dependencies": {
-          "Microsoft.EntityFrameworkCore": "5.0.0",
-          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.0"
+          "Microsoft.EntityFrameworkCore": "5.0.0"
         },
         "runtime": {
           "gameshop.Core.dll": {}
