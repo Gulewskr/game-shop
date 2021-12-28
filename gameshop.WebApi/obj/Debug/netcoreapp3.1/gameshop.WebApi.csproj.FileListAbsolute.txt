@@ -66,3 +66,8 @@ C:\Studia\PAWiM\GameShop\gameshop.WebApi\bin\Debug\netcoreapp3.1\gameshop.Core.d
 C:\Studia\PAWiM\GameShop\gameshop.WebApi\bin\Debug\netcoreapp3.1\gameshop.Infrastructure.dll
 C:\Studia\PAWiM\GameShop\gameshop.WebApi\bin\Debug\netcoreapp3.1\gameshop.Infrastructure.pdb
 C:\Studia\PAWiM\GameShop\gameshop.WebApi\bin\Debug\netcoreapp3.1\gameshop.Core.pdb
+C:\Studia\PAWiM\GameShop\gameshop.WebApi\obj\Debug\netcoreapp3.1\gameshop.WebApi.MvcApplicationPartsAssemblyInfo.cs
+C:\Studia\PAWiM\GameShop\gameshop.WebApi\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+C:\Studia\PAWiM\GameShop\gameshop.WebApi\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+C:\Studia\PAWiM\GameShop\gameshop.WebApi\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Studia\PAWiM\GameShop\gameshop.WebApi\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
