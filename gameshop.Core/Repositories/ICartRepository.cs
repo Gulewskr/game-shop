@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace gameshop.Core.Repositories
 {
-    public interface IPasswordRepository
+    public interface ICartRepository
     {
-        Task UpdataeAsync(Password o);
-        Task AddAsync(Password o);
+        Task UpdataeAsync(Cart o);
+        Task AddAsync(Cart o);
         Task DelAsync(int id);
-        Task<Password> GetAsync(int id);
-        Task<IEnumerable<Password>> BrowseAllAsync();
+        Task<Cart> GetAsync(int id);
+        Task<IEnumerable<Cart>> BrowseAllAsync();
     }
 }

@@ -1,4 +1,6 @@
-﻿using gameshop.Infrastructure.Services;
+﻿using gameshop.Infrastructure.Commands;
+using gameshop.Infrastructure.DTO;
+using gameshop.Infrastructure.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -21,32 +23,50 @@ namespace gameshop.WebApi.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            String z = "WoW Mega";
+            IEnumerable<DeveloperDTO> z = await _developerService.GetAll();
             return Json(z);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            String z = "WoW Mega id " + id;
+            DeveloperDTO z = await _developerService.Get(id);
             return Json(z);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add(/* [FromBody] CreateDeveloper developer */)
+        public async Task<IActionResult> Add([FromBody] CreateDeveloper developer)
         {
+            await _developerService.Add(new DeveloperDTO()
+            {
+                Name = developer.Name,
+                EMail = developer.EMail,
+                Country = developer.Country,
+                City = developer.City,
+                Address = developer.Address
+            });
             return NoContent();
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(/* [FromBody] CreateDeveloper developer ,*/ int id)
+        public async Task<IActionResult> Update([FromBody] CreateDeveloper developer, int id)
         {
+            await _developerService.Update(new DeveloperDTO()
+            {
+                Id = id,
+                Name = developer.Name,
+                EMail = developer.EMail,
+                Country = developer.Country,
+                City = developer.City,
+                Address = developer.Address
+            });
             return NoContent();
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
+            await _developerService.Delete(id);
             return NoContent();
         }
     }

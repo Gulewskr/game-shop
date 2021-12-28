@@ -35,7 +35,7 @@ namespace gameshop.WebApi
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<ICategoryService, CategoryService>();
             //Cart
-            services.AddScoped<ICatRepository, CatRepository>();
+            services.AddScoped<ICartRepository, CatRepository>();
             services.AddScoped<ICartService, CartService>();
             //Order
             services.AddScoped<IOrderRepository, OrderRepository>();
@@ -51,7 +51,7 @@ namespace gameshop.WebApi
             services.AddScoped<IPlatformService, PlatformService>();
             //Games
             services.AddScoped<IGameRepository, GameRepository>();
-            services.AddScoped<IGameByPlatformRepository, IGameByPlatformRepository>();
+            services.AddScoped<IGameByPlatformRepository, GameByPlatformRepository>();
             services.AddScoped<IGameService, GameService>();
             //Users
             services.AddScoped<IUserRepository, UserRepository>();
