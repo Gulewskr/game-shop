@@ -1,7 +1,9 @@
-﻿using gameshop.Core.Repositories;
+﻿using gameshop.Core.Domain;
+using gameshop.Core.Repositories;
 using gameshop.Infrastructure.DTO;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,29 +16,56 @@ namespace gameshop.Infrastructure.Services
         {
             platformRepository = repository;
         }
-        public Task Add(PlatformDTO platform)
+        public async Task Add(PlatformDTO platform)
         {
-            throw new NotImplementedException();
+            if (platform == null) throw new ArgumentNullException("coach must have value");
+            await platformRepository.AddAsync(new Platform()
+            {
+                Name = platform.Name,
+                ImgSrc = platform.ImgSrc
+            });
+            return;
         }
 
-        public Task Delete(int id)
+        public async Task Delete(int id)
         {
-            throw new NotImplementedException();
+            await platformRepository.DelAsync(id);
+            return;
         }
 
-        public Task<PlatformDTO> Get(int id)
+        public async Task<PlatformDTO> Get(int id)
         {
-            throw new NotImplementedException();
+            var z = await platformRepository.GetAsync(id);
+            if (z == null) return null;
+            return new PlatformDTO()
+            {
+                Id = z.Id,
+                Name = z.Name,
+                ImgSrc = z.ImgSrc
+            };
         }
 
-        public Task<IEnumerable<PlatformDTO>> GetAll()
+        public async Task<IEnumerable<PlatformDTO>> GetAll()
         {
-            throw new NotImplementedException();
+            var z = await platformRepository.BrowseAllAsync();
+            return z.Select(platform => new PlatformDTO()
+            {
+                Id = platform.Id,
+                Name = platform.Name,
+                ImgSrc = platform.ImgSrc
+            });
         }
 
-        public Task Update(PlatformDTO platform)
+        public async Task Update(PlatformDTO platform)
         {
-            throw new NotImplementedException();
+            if (platform == null) throw new ArgumentNullException("developer must have value");
+            await platformRepository.UpdataeAsync(new Platform()
+            {
+                Id = platform.Id,
+                Name = platform.Name,
+                ImgSrc = platform.ImgSrc
+            });
+            return;
         }
     }
 }

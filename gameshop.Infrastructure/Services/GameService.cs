@@ -1,7 +1,9 @@
-﻿using gameshop.Core.Repositories;
+﻿using gameshop.Core.Domain;
+using gameshop.Core.Repositories;
 using gameshop.Infrastructure.DTO;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,29 +16,68 @@ namespace gameshop.Infrastructure.Services
         {
             gameRepository = repository;
         }
-        public Task Add(GameDTO game)
+        public async Task Add(GameDTO game)
         {
-            throw new NotImplementedException();
+            if (game == null) throw new ArgumentNullException("coach must have value");
+            await gameRepository.AddAsync(new Game()
+            {
+                Name = game.Name,
+                Description = game.Description,
+                CategoryID = game.CategoryID,
+                DeveloperID = game.DeveloperID,
+                PublisherID = game.PublisherID
+            });
+            return;
         }
 
-        public Task Delete(int id)
+        public async Task Delete(int id)
         {
-            throw new NotImplementedException();
+            await gameRepository.DelAsync(id);
+            return;
         }
 
-        public Task<GameDTO> Get(int id)
+        public async Task<GameDTO> Get(int id)
         {
-            throw new NotImplementedException();
+            var z = await gameRepository.GetAsync(id);
+            if (z == null) return null;
+            return new GameDTO()
+            {
+                Id = z.Id,
+                Name = z.Name,
+                Description = z.Description,
+                CategoryID = z.CategoryID,
+                DeveloperID = z.DeveloperID,
+                PublisherID = z.PublisherID
+            };
         }
 
-        public Task<IEnumerable<GameDTO>> GetAll()
+        public async Task<IEnumerable<GameDTO>> GetAll()
         {
-            throw new NotImplementedException();
+            var z = await gameRepository.BrowseAllAsync();
+            return z.Select(game => new GameDTO()
+            {
+                Id = game.Id,
+                Name = game.Name,
+                Description = game.Description,
+                CategoryID = game.CategoryID,
+                DeveloperID = game.DeveloperID,
+                PublisherID = game.PublisherID
+            });
         }
 
-        public Task Update(GameDTO game)
+        public async Task Update(GameDTO game)
         {
-            throw new NotImplementedException();
+            if (game == null) throw new ArgumentNullException("developer must have value");
+            await gameRepository.UpdataeAsync(new Game()
+            {
+                Id = game.Id,
+                Name = game.Name,
+                Description = game.Description,
+                CategoryID = game.CategoryID,
+                DeveloperID = game.DeveloperID,
+                PublisherID = game.PublisherID
+            });
+            return;
         }
     }
 }

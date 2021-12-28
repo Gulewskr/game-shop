@@ -1,7 +1,9 @@
-﻿using gameshop.Core.Repositories;
+﻿using gameshop.Core.Domain;
+using gameshop.Core.Repositories;
 using gameshop.Infrastructure.DTO;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,29 +16,68 @@ namespace gameshop.Infrastructure.Services
         {
             publisherRepository = repository;
         }
-        public Task Add(PublisherDTO publisher)
+        public async Task Add(PublisherDTO publisher)
         {
-            throw new NotImplementedException();
+            if (publisher == null) throw new ArgumentNullException("coach must have value");
+            await publisherRepository.AddAsync(new Publisher()
+            {
+                Name = publisher.Name,
+                EMail = publisher.EMail,
+                Country = publisher.Country,
+                City = publisher.City,
+                Address = publisher.Address
+            });
+            return;
         }
 
-        public Task Delete(int id)
+        public async Task Delete(int id)
         {
-            throw new NotImplementedException();
+            await publisherRepository.DelAsync(id);
+            return;
         }
 
-        public Task<PublisherDTO> Get(int id)
+        public async Task<PublisherDTO> Get(int id)
         {
-            throw new NotImplementedException();
+            var z = await publisherRepository.GetAsync(id);
+            if (z == null) return null;
+            return new PublisherDTO()
+            {
+                Id = z.Id,
+                Name = z.Name,
+                EMail = z.EMail,
+                Country = z.Country,
+                City = z.City,
+                Address = z.Address
+            };
         }
 
-        public Task<IEnumerable<PublisherDTO>> GetAll()
+        public async Task<IEnumerable<PublisherDTO>> GetAll()
         {
-            throw new NotImplementedException();
+            var z = await publisherRepository.BrowseAllAsync();
+            return z.Select(publisher => new PublisherDTO()
+            {
+                Id = publisher.Id,
+                Name = publisher.Name,
+                EMail = publisher.EMail,
+                Country = publisher.Country,
+                City = publisher.City,
+                Address = publisher.Address
+            });
         }
 
-        public Task Update(PublisherDTO publisher)
+        public async Task Update(PublisherDTO publisher)
         {
-            throw new NotImplementedException();
+            if (publisher == null) throw new ArgumentNullException("developer must have value");
+            await publisherRepository.UpdataeAsync(new Publisher()
+            {
+                Id = publisher.Id,
+                Name = publisher.Name,
+                EMail = publisher.EMail,
+                Country = publisher.Country,
+                City = publisher.City,
+                Address = publisher.Address
+            });
+            return;
         }
     }
 }

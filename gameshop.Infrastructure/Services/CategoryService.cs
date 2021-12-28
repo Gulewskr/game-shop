@@ -1,7 +1,9 @@
-﻿using gameshop.Core.Repositories;
+﻿using gameshop.Core.Domain;
+using gameshop.Core.Repositories;
 using gameshop.Infrastructure.DTO;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,29 +16,52 @@ namespace gameshop.Infrastructure.Services
         {
             categoryRepository = repository;
         }
-        public Task Add(CategoryDTO category)
+        public async Task Add(CategoryDTO category)
         {
-            throw new NotImplementedException();
+            if (category == null) throw new ArgumentNullException("coach must have value");
+            await categoryRepository.AddAsync(new Category()
+            {
+                Name = category.Name
+            });
+            return;
         }
 
-        public Task Delete(int id)
+        public async Task Delete(int id)
         {
-            throw new NotImplementedException();
+            await categoryRepository.DelAsync(id);
+            return;
         }
 
-        public Task<CategoryDTO> Get(int id)
+        public async Task<CategoryDTO> Get(int id)
         {
-            throw new NotImplementedException();
+            var z = await categoryRepository.GetAsync(id);
+            if (z == null) return null;
+            return new CategoryDTO()
+            {
+                Id = z.Id,
+                Name = z.Name
+            };
         }
 
-        public Task<IEnumerable<CategoryDTO>> GetAll()
+        public async Task<IEnumerable<CategoryDTO>> GetAll()
         {
-            throw new NotImplementedException();
+            var z = await categoryRepository.BrowseAllAsync();
+            return z.Select(z => new CategoryDTO()
+            {
+                Id = z.Id,
+                Name = z.Name
+            });
         }
 
-        public Task Update(CategoryDTO category)
+        public async Task Update(CategoryDTO category)
         {
-            throw new NotImplementedException();
+            if (category == null) throw new ArgumentNullException("developer must have value");
+            await categoryRepository.UpdataeAsync(new Category()
+            {
+                Id = category.Id,
+                Name = category.Name
+            });
+            return;
         }
     }
 }

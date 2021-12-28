@@ -1,7 +1,9 @@
-﻿using gameshop.Core.Repositories;
+﻿using gameshop.Core.Domain;
+using gameshop.Core.Repositories;
 using gameshop.Infrastructure.DTO;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,29 +16,60 @@ namespace gameshop.Infrastructure.Services
         {
             passwordRepository = repository;
         }
-        public Task Add(PasswordDTO password)
+        public async Task Add(PasswordDTO password)
         {
-            throw new NotImplementedException();
+            if (password == null) throw new ArgumentNullException("coach must have value");
+            await passwordRepository.AddAsync(new Password()
+            {
+                UserID = password.UserID,
+                Salt = password.Salt,
+                HashedPassword = password.HashedPassword
+            });
+            return;
         }
 
-        public Task Delete(int id)
+        public async Task Delete(int id)
         {
-            throw new NotImplementedException();
+            await passwordRepository.DelAsync(id);
+            return;
         }
 
-        public Task<PasswordDTO> Get(int id)
+        public async Task<PasswordDTO> Get(int id)
         {
-            throw new NotImplementedException();
+            var z = await passwordRepository.GetAsync(id);
+            if (z == null) return null;
+            return new PasswordDTO()
+            {
+                Id = z.Id,
+                UserID = z.UserID,
+                Salt = z.Salt,
+                HashedPassword = z.HashedPassword
+            };
         }
 
-        public Task<IEnumerable<PasswordDTO>> GetAll()
+        public async Task<IEnumerable<PasswordDTO>> GetAll()
         {
-            throw new NotImplementedException();
+            var z = await passwordRepository.BrowseAllAsync();
+            return z.Select(password => new PasswordDTO()
+            {
+                Id = password.Id,
+                UserID = password.UserID,
+                Salt = password.Salt,
+                HashedPassword = password.HashedPassword
+            });
         }
 
-        public Task Update(PasswordDTO password)
+        public async Task Update(PasswordDTO password)
         {
-            throw new NotImplementedException();
+            if (password == null) throw new ArgumentNullException("developer must have value");
+            await passwordRepository.UpdataeAsync(new Password()
+            {
+                Id = password.Id,
+                UserID = password.UserID,
+                Salt = password.Salt,
+                HashedPassword = password.HashedPassword
+            });
+            return;
         }
     }
 }

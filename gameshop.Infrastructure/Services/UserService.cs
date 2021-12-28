@@ -1,7 +1,9 @@
-﻿using gameshop.Core.Repositories;
+﻿using gameshop.Core.Domain;
+using gameshop.Core.Repositories;
 using gameshop.Infrastructure.DTO;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,29 +16,64 @@ namespace gameshop.Infrastructure.Services
         {
             userRepository = repository;
         }
-        public Task Add(UserDTO user)
+        public async Task Add(UserDTO user)
         {
-            throw new NotImplementedException();
+            if (user == null) throw new ArgumentNullException("coach must have value");
+            await userRepository.AddAsync(new User()
+            {
+                Login = user.Login,
+                Forename = user.Forename,
+                Surname = user.Surname,
+                BornDate = user.BornDate
+            });
+            return;
         }
 
-        public Task Delete(int id)
+        public async Task Delete(int id)
         {
-            throw new NotImplementedException();
+            await userRepository.DelAsync(id);
+            return;
         }
 
-        public Task<UserDTO> Get(int id)
+        public async Task<UserDTO> Get(int id)
         {
-            throw new NotImplementedException();
+            var z = await userRepository.GetAsync(id);
+            if (z == null) return null;
+            return new UserDTO()
+            {
+                Id = z.Id,
+                Login = z.Login,
+                Forename = z.Forename,
+                Surname = z.Surname,
+                BornDate = z.BornDate
+            };
         }
 
-        public Task<IEnumerable<UserDTO>> GetAll()
+        public async Task<IEnumerable<UserDTO>> GetAll()
         {
-            throw new NotImplementedException();
+            var z = await userRepository.BrowseAllAsync();
+            return z.Select(user => new UserDTO()
+            {
+                Id = user.Id,
+                Login = user.Login,
+                Forename = user.Forename,
+                Surname = user.Surname,
+                BornDate = user.BornDate
+            });
         }
 
-        public Task Update(UserDTO user)
+        public async Task Update(UserDTO user)
         {
-            throw new NotImplementedException();
+            if (user == null) throw new ArgumentNullException("developer must have value");
+            await userRepository.UpdataeAsync(new User()
+            {
+                Id = user.Id,
+                Login = user.Login,
+                Forename = user.Forename,
+                Surname = user.Surname,
+                BornDate = user.BornDate
+            });
+            return;
         }
     }
 }
