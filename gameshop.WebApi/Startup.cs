@@ -51,8 +51,9 @@ namespace gameshop.WebApi
             services.AddScoped<IPlatformService, PlatformService>();
             //Games
             services.AddScoped<IGameRepository, GameRepository>();
-            services.AddScoped<IGameByPlatformRepository, GameByPlatformRepository>();
             services.AddScoped<IGameService, GameService>();
+            services.AddScoped<IGameByPlatformRepository, GameByPlatformRepository>();
+            services.AddScoped<IGameByPlatService, GameByPlatService>();
             //Users
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserService, UserService>();
