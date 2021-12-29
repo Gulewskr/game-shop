@@ -4,7 +4,7 @@ using System.Text;
 
 namespace gameshop.Infrastructure.Commands
 {
-    public class CreateDeveloper
+    public class CreateCompany
     {
         public string Name { get; set; }
         public string Country { get; set; }

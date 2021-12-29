@@ -35,7 +35,7 @@ namespace gameshop.WebApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add([FromBody] CreateDeveloper developer)
+        public async Task<IActionResult> Add([FromBody] CreateCompany developer)
         {
             await _developerService.Add(new DeveloperDTO()
             {
@@ -49,7 +49,7 @@ namespace gameshop.WebApi.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update([FromBody] CreateDeveloper developer, int id)
+        public async Task<IActionResult> Update([FromBody] CreateCompany developer, int id)
         {
             await _developerService.Update(new DeveloperDTO()
             {

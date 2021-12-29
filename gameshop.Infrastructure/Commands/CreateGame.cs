@@ -4,7 +4,14 @@ using System.Text;
 
 namespace gameshop.Infrastructure.Commands
 {
-    class CreateGame
+    public class CreateGame
     {
+        //props
+        public string Name { get; set; }
+        public string Description { get; set; }
+        //FK
+        public int CategoryID { get; set; }
+        public int PublisherID { get; set; }
+        public int DeveloperID { get; set; }
     }
 }
