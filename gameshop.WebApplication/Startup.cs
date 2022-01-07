@@ -31,7 +31,12 @@ namespace gameshop.WebApplication
                 options => {
                     options.UseSqlServer(Configuration.GetConnectionString("GameShopConnectionString"));
                 });
-
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.Password.RequireDigit = true;
+                options.Password.RequiredLength = 8;
+                options.Password.RequireNonAlphanumeric = true;
+            });
             services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
         }
 

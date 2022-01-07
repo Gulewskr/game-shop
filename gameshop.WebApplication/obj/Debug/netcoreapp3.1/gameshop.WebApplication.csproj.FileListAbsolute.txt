@@ -87,3 +87,5 @@ C:\Studia\PAWiM\GameShop\gameshop.WebApplication\bin\Debug\netcoreapp3.1\Microso
 C:\Studia\PAWiM\GameShop\gameshop.WebApplication\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\Studia\PAWiM\GameShop\gameshop.WebApplication\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
 C:\Studia\PAWiM\GameShop\gameshop.WebApplication\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
+C:\Studia\PAWiM\GameShop\gameshop.WebApplication\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
+C:\Studia\PAWiM\GameShop\gameshop.WebApplication\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs

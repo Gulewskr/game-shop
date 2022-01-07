@@ -20,7 +20,7 @@ namespace gameshop.Infrastructure.Repositories
         {
             try
             {
-                //_appDbContext.User.Add(o);
+                _appDbContext.User.Add(o);
                 _appDbContext.SaveChanges();
                 await Task.CompletedTask;
             }
@@ -33,18 +33,13 @@ namespace gameshop.Infrastructure.Repositories
         public async Task<IEnumerable<User>> BrowseAllAsync()
         {
             return await Task.FromResult(_appDbContext.User);
-           // await Task.CompletedTask;
-            //return new List<User>();
         }
 
         public async Task DelAsync(int id)
         {
             try
             {
-                User u = _appDbContext.User.FirstOrDefault(x => x.Id == id);
-                //var user = await _userManager.FindByIdAsync(u.Id);
-                _appDbContext.Remove(u);
-                //await _userManager.DeleteAsync(user);
+                _appDbContext.Remove(_appDbContext.User.FirstOrDefault(x => x.Id == id));
                 _appDbContext.SaveChanges();
                 await Task.CompletedTask;
             }

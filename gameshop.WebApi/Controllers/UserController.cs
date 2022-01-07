@@ -37,11 +37,14 @@ namespace gameshop.WebApi.Controllers
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] CreateUser user)
         {
+            Console.WriteLine(user.UserId);
             await _service.Add(new UserDTO()
             {
-                Login = user.Login,
+                UserId = user.UserId,
                 Forename = user.Forename,
                 Surname = user.Surname,
+                Email = user.Email,
+                Phonenumber = user.Phonenumber,
                 BornDate = user.BornDate
             });
             return NoContent();
@@ -53,9 +56,11 @@ namespace gameshop.WebApi.Controllers
             await _service.Update(new UserDTO()
             {
                 Id = id,
-                Login = user.Login,
+                UserId = user.UserId,
                 Forename = user.Forename,
                 Surname = user.Surname,
+                Email = user.Email,
+                Phonenumber = user.Phonenumber,
                 BornDate = user.BornDate
             });
             return NoContent();

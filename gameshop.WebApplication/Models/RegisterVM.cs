@@ -15,9 +15,10 @@ namespace gameshop.WebApplication.Models
         [Display(Name = "User password")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
-        public string Forename { get; set; }
         public string Surname { get; set; }
+        public string Forename { get; set; }
         public string Email { get; set; }
+        public string Phonenumber { get; set; }
         public DateTime BornDate { get; set; }
     }
 }

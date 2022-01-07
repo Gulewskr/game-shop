@@ -22,6 +22,7 @@ namespace gameshop.Infrastructure.Services
             await userRepository.AddAsync(new User()
             {
                 Id = user.Id,
+                UserId = user.UserId,
                 Forename = user.Forename,
                 Surname = user.Surname,
                 BornDate = user.BornDate,

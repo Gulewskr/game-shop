@@ -1,0 +1,75 @@
+﻿@model gameshop.WebApplication.Models.RegisterVM
+
+<h3>
+    Zarejestruj konto w systemie</br>
+    Jeśli już posiadasz konto
+    <a asp-action="Login" asp-controller="Account">zaloguj się!</a>
+</h3>
+
+<form asp-action="Register" asp-controller="Account" method="post" class="form-horizontal" role="form">
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+
+    <div class="form-group">
+        <label asp-for="Login" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="Login" class="form-control" />
+            <span asp-validation-for="Login" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Password" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="Password" class="form-control" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Forename" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="Forename" class="form-control" />
+            <span asp-validation-for="Forename" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Surname" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="Surname" class="form-control" />
+            <span asp-validation-for="Surname" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Phonenumber" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="Phonenumber" class="form-control" />
+            <span asp-validation-for="Phonenumber" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="BornDate" class="control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="BornDate" class="form-control" />
+            <span asp-validation-for="BornDate" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-primary" value="Rejestracja" />
+        </div>
+    </div>
+</form>
