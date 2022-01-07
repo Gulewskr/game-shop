@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace gameshop.Infrastructure.Repositories
 {
-    public class UserRepository : IUserRepository
+    public class UserRepository : IUsersRepository
     {
         private AppDbContext _appDbContext;
         public UserRepository(AppDbContext appDbContext)
@@ -20,7 +20,7 @@ namespace gameshop.Infrastructure.Repositories
         {
             try
             {
-                _appDbContext.Users.Add(o);
+                //_appDbContext.User.Add(o);
                 _appDbContext.SaveChanges();
                 await Task.CompletedTask;
             }
@@ -32,14 +32,19 @@ namespace gameshop.Infrastructure.Repositories
 
         public async Task<IEnumerable<User>> BrowseAllAsync()
         {
-            return await Task.FromResult(_appDbContext.Users);
+            return await Task.FromResult(_appDbContext.User);
+           // await Task.CompletedTask;
+            //return new List<User>();
         }
 
         public async Task DelAsync(int id)
         {
             try
             {
-                _appDbContext.Remove(_appDbContext.Users.FirstOrDefault(x => x.Id == id));
+                User u = _appDbContext.User.FirstOrDefault(x => x.Id == id);
+                //var user = await _userManager.FindByIdAsync(u.Id);
+                _appDbContext.Remove(u);
+                //await _userManager.DeleteAsync(user);
                 _appDbContext.SaveChanges();
                 await Task.CompletedTask;
             }
@@ -51,15 +56,21 @@ namespace gameshop.Infrastructure.Repositories
 
         public async Task<User> GetAsync(int id)
         {
-            return await Task.FromResult(_appDbContext.Users.FirstOrDefault(x => x.Id == id));
+            return await Task.FromResult(_appDbContext.User.FirstOrDefault(x => x.Id == id));
+            //return null;
         }
 
         public async Task UpdataeAsync(User o)
         {
             try
             {
-                var z = _appDbContext.Users.FirstOrDefault(x => x.Id == o.Id);
-                z.Login = o.Login;
+                var z = _appDbContext.User.FirstOrDefault(x => x.Id == o.Id);
+                //var user = await _userManager.FindByIdAsync(z.Id);
+                //if (user != null)
+                //{
+                //    user.Email = o.Email;
+                //}
+                z.Email = o.Email;
                 z.Forename = o.Forename;
                 z.Surname = o.Surname;
                 z.BornDate = o.BornDate;

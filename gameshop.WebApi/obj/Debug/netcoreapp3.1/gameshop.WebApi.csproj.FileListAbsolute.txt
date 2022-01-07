@@ -71,3 +71,8 @@ C:\Studia\PAWiM\GameShop\gameshop.WebApi\bin\Debug\netcoreapp3.1\Microsoft.OpenA
 C:\Studia\PAWiM\GameShop\gameshop.WebApi\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
 C:\Studia\PAWiM\GameShop\gameshop.WebApi\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Studia\PAWiM\GameShop\gameshop.WebApi\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Studia\PAWiM\GameShop\gameshop.WebApi\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Studia\PAWiM\GameShop\gameshop.WebApi\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Studia\PAWiM\GameShop\gameshop.WebApi\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Studia\PAWiM\GameShop\gameshop.WebApi\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+C:\Studia\PAWiM\GameShop\gameshop.WebApi\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll

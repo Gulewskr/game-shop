@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace gameshop.Core.Repositories
 {
-    public interface IUserRepository
+    public interface IUsersRepository
     {
         Task UpdataeAsync(User o);
         Task AddAsync(User o);

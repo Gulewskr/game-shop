@@ -11,5 +11,7 @@ namespace gameshop.Infrastructure.DTO
         public string Surname { get; set; }
         public string Forename { get; set; }
         public DateTime BornDate { get; set; }
+        public string Email { get; set; }
+        public string Phonenumber { get; set; }
     }
 }

@@ -1,3 +1,4 @@
+using gameshop.Core.Domain;
 using gameshop.Core.Repositories;
 using gameshop.Infrastructure.Repositories;
 using gameshop.Infrastructure.Services;
@@ -55,19 +56,20 @@ namespace gameshop.WebApi
             services.AddScoped<IGameByPlatformRepository, GameByPlatformRepository>();
             services.AddScoped<IGameByPlatService, GameByPlatService>();
             //Users
-            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUsersRepository, UserRepository>();
             services.AddScoped<IUserService, UserService>();
-            //Passwords
-            services.AddScoped<IPasswordRepository, PasswordRepository>();
-            services.AddScoped<IPasswordService, PasswordService>();
 
+            //services.AddMvc();
             services.AddDbContext<AppDbContext>(
                 options =>
                 {
                     options.UseSqlServer(Configuration.GetConnectionString("GameShopConnectionString"));
                 }
             );
-
+            /*
+                services.AddIdentity<IdentityUser, IdentityRole>()
+                    .AddUserStore<AppDbContext>();
+            */
             services.AddSwaggerGen(c => {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "GameShop.WebAPI", Version = "v1" });
             });
@@ -84,6 +86,8 @@ namespace gameshop.WebApi
             }
 
             app.UseHttpsRedirection();
+
+            //app.UseAuthentication();
 
             app.UseRouting();
 
