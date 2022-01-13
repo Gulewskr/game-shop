@@ -163,3 +163,10 @@ C:\Studia\PAWiM\GameShop\gameshop.WebApplication\bin\Debug\netcoreapp3.1\zh-Hans
 C:\Studia\PAWiM\GameShop\gameshop.WebApplication\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Studia\PAWiM\GameShop\gameshop.WebApplication\obj\Debug\netcoreapp3.1\Razor\Views\Developer\Index.cshtml.g.cs
 C:\Studia\PAWiM\GameShop\gameshop.WebApplication\obj\Debug\netcoreapp3.1\Razor\Views\Developer\Create.cshtml.g.cs
+C:\Studia\PAWiM\GameShop\gameshop.WebApplication\obj\Debug\netcoreapp3.1\Razor\Views\Developer\Edit.cshtml.g.cs
+C:\Studia\PAWiM\GameShop\gameshop.WebApplication\obj\Debug\netcoreapp3.1\Razor\Views\Game\Create.cshtml.g.cs
+C:\Studia\PAWiM\GameShop\gameshop.WebApplication\obj\Debug\netcoreapp3.1\Razor\Views\Category\Index.cshtml.g.cs
+C:\Studia\PAWiM\GameShop\gameshop.WebApplication\obj\Debug\netcoreapp3.1\Razor\Views\Category\Create.cshtml.g.cs
+C:\Studia\PAWiM\GameShop\gameshop.WebApplication\obj\Debug\netcoreapp3.1\Razor\Views\Platform\Index.cshtml.g.cs
+C:\Studia\PAWiM\GameShop\gameshop.WebApplication\obj\Debug\netcoreapp3.1\Razor\Views\Platform\Create.cshtml.g.cs
+C:\Studia\PAWiM\GameShop\gameshop.WebApplication\obj\Debug\netcoreapp3.1\Razor\Views\Game\Index.cshtml.g.cs
