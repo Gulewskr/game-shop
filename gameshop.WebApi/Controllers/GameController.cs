@@ -1,6 +1,7 @@
 ﻿using gameshop.Infrastructure.Commands;
 using gameshop.Infrastructure.DTO;
 using gameshop.Infrastructure.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace gameshop.WebApi.Controllers
 {
+    
     [ApiController]
     [Route("[controller]")]
     public class GameController : Controller
@@ -34,6 +36,7 @@ namespace gameshop.WebApi.Controllers
             return Json(z);
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] CreateGame game)
         {
@@ -48,6 +51,7 @@ namespace gameshop.WebApi.Controllers
             return NoContent();
         }
 
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> Update([FromBody] CreateGame game, int id)
         {
@@ -63,6 +67,7 @@ namespace gameshop.WebApi.Controllers
             return NoContent();
         }
 
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {

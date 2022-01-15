@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,9 +15,11 @@ namespace gameshop.WebApplication.Controllers
     public class DeveloperController : Controller
     {
         public IConfiguration Configuration;
-        public DeveloperController(IConfiguration configuration)
+        private readonly JWTOKEN TokenService;
+        public DeveloperController(IConfiguration configuration, JWTOKEN _token)
         {
             Configuration = configuration;
+            TokenService = _token;
         }
 
         public ContentResult GetHostUrl()
@@ -33,43 +36,57 @@ namespace gameshop.WebApplication.Controllers
         public async Task<IActionResult> Index()
         {
             string _restpath = GetHostUrl().Content + CN();
+            var token = TokenService.GenerateJSONWebToken();
 
-            //var token = AccountController.TokenString;
             List<CompanyVM> list = new List<CompanyVM>();
-
-            using (var httpClient = new HttpClient())
+            try
             {
-                httpClient.DefaultRequestHeaders.Clear();
-                //httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-
-                System.Diagnostics.Debug.WriteLine(httpClient.DefaultRequestHeaders);
-                using (var response = await httpClient.GetAsync(_restpath))
+                using (var httpClient = new HttpClient())
                 {
-                    string apiResponse = await response.Content.ReadAsStringAsync();
-                    list = JsonConvert.DeserializeObject<List<CompanyVM>>(apiResponse);
+                    httpClient.DefaultRequestHeaders.Clear();
+                    httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-                    System.Diagnostics.Debug.WriteLine(response.StatusCode);
+                    System.Diagnostics.Debug.WriteLine(httpClient.DefaultRequestHeaders);
+                    using (var response = await httpClient.GetAsync(_restpath))
+                    {
+                        string apiResponse = await response.Content.ReadAsStringAsync();
+                        list = JsonConvert.DeserializeObject<List<CompanyVM>>(apiResponse);
+
+                        System.Diagnostics.Debug.WriteLine(response.StatusCode);
+                    }
                 }
             }
-
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+            }
             return View(list);
         }
 
         public async Task<IActionResult> Edit(int id)
         {
             string _restpath = GetHostUrl().Content + CN();
+            var token = TokenService.GenerateJSONWebToken();
 
             CompanyVM ob = new CompanyVM();
-
-            using (var httpClient = new HttpClient())
+            try
             {
-                using (var response = await httpClient.GetAsync($"{_restpath}/{id}"))
+                using (var httpClient = new HttpClient())
                 {
-                    string apiResponse = await response.Content.ReadAsStringAsync();
-                    ob = JsonConvert.DeserializeObject<CompanyVM>(apiResponse);
+                    httpClient.DefaultRequestHeaders.Clear();
+                    httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                    using (var response = await httpClient.GetAsync($"{_restpath}/{id}"))
+                    {
+                        string apiResponse = await response.Content.ReadAsStringAsync();
+                        ob = JsonConvert.DeserializeObject<CompanyVM>(apiResponse);
+                    }
                 }
             }
-
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+            }
             return View(ob);
         }
 
@@ -77,6 +94,7 @@ namespace gameshop.WebApplication.Controllers
         public async Task<IActionResult> Edit(CompanyVM o)
         {
             string _restpath = GetHostUrl().Content + CN();
+            var token = TokenService.GenerateJSONWebToken();
 
             CompanyVM ob = new CompanyVM();
 
@@ -84,6 +102,9 @@ namespace gameshop.WebApplication.Controllers
             {
                 using (var httpClient = new HttpClient())
                 {
+                    httpClient.DefaultRequestHeaders.Clear();
+                    httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
                     string jsonString = System.Text.Json.JsonSerializer.Serialize(o);
                     var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
                     using (var response = await httpClient.PutAsync($"{_restpath}/{o.Id}", content))
@@ -105,11 +126,15 @@ namespace gameshop.WebApplication.Controllers
         public async Task<IActionResult> Delete(int id)
         {
             string _restpath = GetHostUrl().Content + CN();
+            var token = TokenService.GenerateJSONWebToken();
 
             try
             {
                 using (var httpClient = new HttpClient())
                 {
+                    httpClient.DefaultRequestHeaders.Clear();
+                    httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
                     using (var response = await httpClient.DeleteAsync($"{_restpath}/{id}"))
                     {
                         string apiResponse = await response.Content.ReadAsStringAsync();
@@ -133,6 +158,7 @@ namespace gameshop.WebApplication.Controllers
         public async Task<IActionResult> Create(CompanyVM o)
         {
             string _restpath = GetHostUrl().Content + CN();
+            var token = TokenService.GenerateJSONWebToken();
 
             CompanyVM ob = new CompanyVM();
 
@@ -140,6 +166,9 @@ namespace gameshop.WebApplication.Controllers
             {
                 using (var httpClient = new HttpClient())
                 {
+                    httpClient.DefaultRequestHeaders.Clear();
+                    httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
                     string jsonString = System.Text.Json.JsonSerializer.Serialize(o);
                     var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
                     using (var response = await httpClient.PostAsync($"{_restpath}", content))

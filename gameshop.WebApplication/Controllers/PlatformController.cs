@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,9 +15,11 @@ namespace gameshop.WebApplication.Controllers
     public class PlatformController : Controller
     {
         public IConfiguration Configuration;
-        public PlatformController(IConfiguration configuration)
+        private readonly JWTOKEN TokenService;
+        public PlatformController(IConfiguration configuration, JWTOKEN _token)
         {
             Configuration = configuration;
+            TokenService = _token;
         }
 
         public ContentResult GetHostUrl()
@@ -31,18 +34,21 @@ namespace gameshop.WebApplication.Controllers
         }
         public async Task<IActionResult> Index()
         {
-
             List < PlatformVM > list = await GetPlatforms();
             return View(list);
         }
         public async Task<IActionResult> Edit(int id)
         {
             string _restpath = GetHostUrl().Content + CN();
+            var token = TokenService.GenerateJSONWebToken();
 
             PlatformVM ob = new PlatformVM();
 
             using (var httpClient = new HttpClient())
             {
+                httpClient.DefaultRequestHeaders.Clear();
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
                 using (var response = await httpClient.GetAsync($"{_restpath}/{id}"))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
@@ -57,6 +63,7 @@ namespace gameshop.WebApplication.Controllers
         public async Task<IActionResult> Edit(PlatformVM o)
         {
             string _restpath = GetHostUrl().Content + CN();
+            var token = TokenService.GenerateJSONWebToken();
 
             PlatformVM ob = new PlatformVM();
 
@@ -64,6 +71,9 @@ namespace gameshop.WebApplication.Controllers
             {
                 using (var httpClient = new HttpClient())
                 {
+                    httpClient.DefaultRequestHeaders.Clear();
+                    httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
                     string jsonString = System.Text.Json.JsonSerializer.Serialize(o);
                     var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
                     using (var response = await httpClient.PutAsync($"{_restpath}/{o.Id}", content))
@@ -85,11 +95,15 @@ namespace gameshop.WebApplication.Controllers
         public async Task<IActionResult> Delete(int id)
         {
             string _restpath = GetHostUrl().Content + CN();
+            var token = TokenService.GenerateJSONWebToken();
 
             try
             {
                 using (var httpClient = new HttpClient())
                 {
+                    httpClient.DefaultRequestHeaders.Clear();
+                    httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
                     using (var response = await httpClient.DeleteAsync($"{_restpath}/{id}"))
                     {
                         string apiResponse = await response.Content.ReadAsStringAsync();
@@ -113,6 +127,7 @@ namespace gameshop.WebApplication.Controllers
         public async Task<IActionResult> Create(PlatformVM o)
         {
             string _restpath = GetHostUrl().Content + CN();
+            var token = TokenService.GenerateJSONWebToken();
 
             PlatformVM ob = new PlatformVM();
 
@@ -120,6 +135,9 @@ namespace gameshop.WebApplication.Controllers
             {
                 using (var httpClient = new HttpClient())
                 {
+                    httpClient.DefaultRequestHeaders.Clear();
+                    httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
                     string jsonString = System.Text.Json.JsonSerializer.Serialize(o);
                     var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
                     using (var response = await httpClient.PostAsync($"{_restpath}", content))
@@ -142,16 +160,15 @@ namespace gameshop.WebApplication.Controllers
         public async Task<List<PlatformVM>> GetPlatforms()
         {
             string _restpath = GetHostUrl().Content + CN();
+            var token = TokenService.GenerateJSONWebToken();
 
-            //var token = AccountController.TokenString;
             List<PlatformVM> list = new List<PlatformVM>();
 
             using (var httpClient = new HttpClient())
             {
                 httpClient.DefaultRequestHeaders.Clear();
-                //httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-
-                System.Diagnostics.Debug.WriteLine(httpClient.DefaultRequestHeaders);
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token); 
+                
                 using (var response = await httpClient.GetAsync(_restpath))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();

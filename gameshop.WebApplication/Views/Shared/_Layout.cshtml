@@ -153,17 +153,19 @@
                             <div class="search-bar">
                                 <select>
                                     <option selected="selected">All Platforms</option>
-                                    @foreach (PlatformVM p in platforms)
-                                    {
-                                        <option>@p.Name</option>
-                                    }
+                                    @if(platforms != null)
+                                        foreach(PlatformVM p in platforms)
+                                        {
+                                            <option>@p.Name</option>
+                                        }
                                 </select>
                                 <select>
                                     <option selected="selected">All Categories</option>
-                                    @foreach (CategoryVM c in categories)
-                                    {
-                                        <option>@c.Name</option>
-                                    }
+                                    @if (categories != null)
+                                        foreach (CategoryVM c in categories)
+                                        {
+                                            <option>@c.Name</option>
+                                        }
                                 </select>
                                 <form>
                                     <input name="search" placeholder="Search Game Here....." type="search">
@@ -210,19 +212,21 @@
                                                 <li>
                                                     <a href="#">Categories</a>
                                                     <ul class="dropdown">
-                                                        @foreach (CategoryVM c in categories)
-                                                        {
-                                                            <li><a href="#">@c.Name</a></li>
-                                                        }
+                                                        @if (categories != null)
+                                                            foreach (CategoryVM c in categories)
+                                                            {
+                                                                <li><a href="#">@c.Name</a></li>
+                                                            }
                                                     </ul>
                                                 </li>
                                                 <li>
                                                     <a href="#">Platforms</a>
                                                     <ul class="dropdown">
-                                                        @foreach (PlatformVM p in platforms)
-                                                        {
-                                                            <li><a href="#">@p.Name</a></li>
-                                                        }
+                                                        @if (platforms != null)
+                                                            foreach (PlatformVM p in platforms)
+                                                            {
+                                                                <li><a href="#">@p.Name</a></li>
+                                                            }
                                                     </ul>
                                                 </li>
                                                 <li>

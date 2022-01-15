@@ -129,39 +129,5 @@ namespace gameshop.WebApplication.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
-
-        public async Task<string> GenerateJSONWebToken()
-        {
-            if (_signInManager.IsSignedIn(User))
-            {
-                //TODO przenieść do configu
-                var key = "SuperTajneHaslo111222";
-
-                var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key));
-                var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
-
-                var user = await _userManager.GetUserAsync(User);
-                var roles = await _userManager.GetRolesAsync(user);
-                var claims = new[]
-                {
-                    new Claim("ID", user.Id),
-                    new Claim("Name", User.Identity.Name),
-                    new Claim("Roles", roles.ToString())
-                };
-
-                var token = new JwtSecurityToken(
-                    expires: DateTime.Now.AddMonths(3),
-                    signingCredentials: credentials,
-                    claims: claims
-                  );
-
-                return new JwtSecurityTokenHandler().WriteToken(token);
-            }
-            else
-            {
-                return "";
-            }
-
-        }
     }
 }

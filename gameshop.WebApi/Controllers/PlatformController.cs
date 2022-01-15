@@ -1,6 +1,7 @@
 ﻿using gameshop.Infrastructure.Commands;
 using gameshop.Infrastructure.DTO;
 using gameshop.Infrastructure.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,7 @@ namespace gameshop.WebApi.Controllers
             return Json(z);
         }
 
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
@@ -34,6 +36,7 @@ namespace gameshop.WebApi.Controllers
             return Json(z);
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] CreatePlatform platform)
         {
@@ -45,6 +48,7 @@ namespace gameshop.WebApi.Controllers
             return NoContent();
         }
 
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> Update([FromBody] CreatePlatform platform, int id)
         {
@@ -57,6 +61,7 @@ namespace gameshop.WebApi.Controllers
             return NoContent();
         }
 
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
