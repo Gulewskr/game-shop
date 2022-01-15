@@ -1,5 +1,32 @@
 ﻿@using Microsoft.AspNetCore.Identity
+@using System.Net.Http;
+@using Newtonsoft.Json;
 @inject SignInManager<IdentityUser> SignInManager
+
+@{
+    string _hostpath = "https://localhost:5001/";
+    List<CategoryVM> categories = new List<CategoryVM>();
+    List<PlatformVM> platforms = new List<PlatformVM>();
+
+    using (var httpClient = new HttpClient())
+    {
+        using (var response = await httpClient.GetAsync(_hostpath + "Category"))
+        {
+            string apiResponse = await response.Content.ReadAsStringAsync();
+            categories = JsonConvert.DeserializeObject<List<CategoryVM>>(apiResponse);
+
+            System.Diagnostics.Debug.WriteLine(response.StatusCode);
+        }
+        using (var response = await httpClient.GetAsync(_hostpath + "Platform"))
+        {
+            string apiResponse = await response.Content.ReadAsStringAsync();
+            platforms = JsonConvert.DeserializeObject<List<PlatformVM>>(apiResponse);
+
+            System.Diagnostics.Debug.WriteLine(response.StatusCode);
+        }
+    }
+
+}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -145,23 +172,17 @@
                             <div class="search-bar">
                                 <select>
                                     <option selected="selected">All Platforms</option>
-                                    <option>PS5</option>
-                                    <option>PS4</option>
-                                    <option>PS3</option>
-                                    <option>XBOX Series X</option>
-                                    <option>XBOX One</option>
-                                    <option>XBOX 360</option>
-                                    <option>Nintendo Switch</option>
-                                    <option>PC</option>
+                                    @foreach (PlatformVM p in platforms)
+                                    {
+                                        <option>@p.Name</option>
+                                    }
                                 </select>
                                 <select>
                                     <option selected="selected">All Categories</option>
-                                    <option>Action</option>
-                                    <option>Sport</option>
-                                    <option>Racing</option>
-                                    <option>Shooters</option>
-                                    <option>Adventure</option>
-                                    <option>Logic</option>
+                                    @foreach (CategoryVM c in categories)
+                                    {
+                                        <option>@c.Name</option>
+                                    }
                                 </select>
                                 <form>
                                     <input name="search" placeholder="Search Game Here....." type="search">
@@ -208,18 +229,19 @@
                                                 <li>
                                                     <a href="#">Categories</a>
                                                     <ul class="dropdown">
-                                                        <li><a href="#">Action</a></li>
-                                                        <li><a href="#">Adventure</a></li>
-                                                        <li><a href="#">Sport</a></li>
+                                                        @foreach (CategoryVM c in categories)
+                                                        {
+                                                            <li><a href="#">@c.Name</a></li>
+                                                        }
                                                     </ul>
                                                 </li>
                                                 <li>
                                                     <a href="#">Platforms</a>
                                                     <ul class="dropdown">
-                                                        <li><a href="#">PS5</a></li>
-                                                        <li><a href="#">Xbox Series X</a></li>
-                                                        <li><a href="#">PC</a></li>
-                                                        <li><a href="#">Nintendo Switch</a></li>
+                                                        @foreach (PlatformVM p in platforms)
+                                                        {
+                                                            <li><a href="#">@p.Name</a></li>
+                                                        }
                                                     </ul>
                                                 </li>
                                                 <li>

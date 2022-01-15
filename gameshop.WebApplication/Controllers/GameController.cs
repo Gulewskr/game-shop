@@ -68,10 +68,14 @@ namespace gameshop.WebApplication.Controllers
                 }
             }
 
-            List<PlatformVM> platforms = await GetPlatforms();
-            List<CategoryVM> categories = await GetCategories();
+            List<PlatformVM> platforms = await StaticPublicRequests.GetPlatforms();
+            List<CategoryVM> categories = await StaticPublicRequests.GetCategories();
+            List<CompanyVM> publishers = await StaticPublicRequests.GetPublishers();
+            List<CompanyVM> developers = await StaticPublicRequests.GetDevelopers();
             ViewBag.Platforms = platforms;
             ViewBag.Categories = categories;
+            ViewBag.Publishers = publishers;
+            ViewBag.Developers = developers;
             return View(ob);
         }
 
@@ -128,10 +132,14 @@ namespace gameshop.WebApplication.Controllers
 
         public async Task<IActionResult> Create()
         {
-            List<PlatformVM> platforms = await GetPlatforms();
-            List<CategoryVM> categories = await GetCategories();
+            List<PlatformVM> platforms = await StaticPublicRequests.GetPlatforms();
+            List<CategoryVM> categories = await StaticPublicRequests.GetCategories();
+            List<CompanyVM> publishers = await StaticPublicRequests.GetPublishers();
+            List<CompanyVM> developers = await StaticPublicRequests.GetDevelopers();
             ViewBag.Platforms = platforms;
             ViewBag.Categories = categories;
+            ViewBag.Publishers = publishers;
+            ViewBag.Developers = developers;
             return View();
         }
 
@@ -160,56 +168,6 @@ namespace gameshop.WebApplication.Controllers
 
 
             return RedirectToAction(nameof(Index));
-        }
-
-        public async Task<List<PlatformVM>> GetPlatforms()
-        {
-            string _restpath = GetHostUrl().Content + "Platform";
-
-            //var token = AccountController.TokenString;
-            List<PlatformVM> list = new List<PlatformVM>();
-
-            using (var httpClient = new HttpClient())
-            {
-                httpClient.DefaultRequestHeaders.Clear();
-                //httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-
-                System.Diagnostics.Debug.WriteLine(httpClient.DefaultRequestHeaders);
-                using (var response = await httpClient.GetAsync(_restpath))
-                {
-                    string apiResponse = await response.Content.ReadAsStringAsync();
-                    list = JsonConvert.DeserializeObject<List<PlatformVM>>(apiResponse);
-
-                    System.Diagnostics.Debug.WriteLine(response.StatusCode);
-                }
-            }
-
-            return list;
-        }
-
-        public async Task<List<CategoryVM>> GetCategories()
-        {
-            string _restpath = GetHostUrl().Content + "Category";
-
-            //var token = AccountController.TokenString;
-            List<CategoryVM> list = new List<CategoryVM>();
-
-            using (var httpClient = new HttpClient())
-            {
-                httpClient.DefaultRequestHeaders.Clear();
-                //httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-
-                System.Diagnostics.Debug.WriteLine(httpClient.DefaultRequestHeaders);
-                using (var response = await httpClient.GetAsync(_restpath))
-                {
-                    string apiResponse = await response.Content.ReadAsStringAsync();
-                    list = JsonConvert.DeserializeObject<List<CategoryVM>>(apiResponse);
-
-                    System.Diagnostics.Debug.WriteLine(response.StatusCode);
-                }
-            }
-
-            return list;
         }
     }
 }

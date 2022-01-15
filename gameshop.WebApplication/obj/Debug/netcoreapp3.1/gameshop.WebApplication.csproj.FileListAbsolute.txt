@@ -170,3 +170,5 @@ C:\Studia\PAWiM\GameShop\gameshop.WebApplication\obj\Debug\netcoreapp3.1\Razor\V
 C:\Studia\PAWiM\GameShop\gameshop.WebApplication\obj\Debug\netcoreapp3.1\Razor\Views\Platform\Index.cshtml.g.cs
 C:\Studia\PAWiM\GameShop\gameshop.WebApplication\obj\Debug\netcoreapp3.1\Razor\Views\Platform\Create.cshtml.g.cs
 C:\Studia\PAWiM\GameShop\gameshop.WebApplication\obj\Debug\netcoreapp3.1\Razor\Views\Game\Index.cshtml.g.cs
+C:\Studia\PAWiM\GameShop\gameshop.WebApplication\obj\Debug\netcoreapp3.1\Razor\Views\Publisher\Index.cshtml.g.cs
+C:\Studia\PAWiM\GameShop\gameshop.WebApplication\obj\Debug\netcoreapp3.1\Razor\Views\Publisher\Create.cshtml.g.cs

@@ -29,17 +29,41 @@
             </div>
             <div class="form-group">
                 <label asp-for="CategoryID" class="control-label"></label>
-                <input asp-for="CategoryID" class="form-control" />
+                <div>
+                    <select asp-for="CategoryID" class="form-control">
+                        <option value="0">Choose Category</option>
+                        @if (ViewBag.Categories != null) foreach (CategoryVM category in ViewBag.Categories)
+                            {
+                                <option value="@category.Id">@category.Name</option>
+                            }
+                    </select>
+                </div>
                 <span asp-validation-for="CategoryID" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="PublisherID" class="control-label"></label>
-                <input asp-for="PublisherID" class="form-control" />
+                <div>
+                    <select asp-for="PublisherID" class="form-control">
+                        <option value="0">Choose Publisher</option>
+                        @if (ViewBag.Publishers != null) foreach (CompanyVM publisher in ViewBag.Publishers)
+                            {
+                                <option value="@publisher.Id">@publisher.Name</option>
+                            }
+                    </select>
+                </div>
                 <span asp-validation-for="PublisherID" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="DeveloperID" class="control-label"></label>
-                <input asp-for="DeveloperID" class="form-control" />
+                <div>
+                    <select asp-for="DeveloperID" class="form-control">
+                        <option value="0">Choose Developer</option>
+                        @if (ViewBag.Developers != null) foreach (CompanyVM developer in ViewBag.Developers)
+                            {
+                                <option value="@developer.Id">@developer.Name</option>
+                            }
+                    </select>
+                </div>
                 <span asp-validation-for="DeveloperID" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -48,23 +72,6 @@
         </form>
     </div>
 </div>
-
-@if (ViewBag.Platforms != null) foreach (PlatformVM platform in ViewBag.Platforms)
-    {
-        <div>
-            <div>@platform.Id</div>
-            <div>@platform.Name</div>
-        </div>
-    }
-
-@if (ViewBag.Categories != null) foreach (CategoryVM category in ViewBag.Categories)
-    {
-        <div>
-            <div>@category.Id</div>
-            <div>@category.Name</div>
-        </div>
-    }
-
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
