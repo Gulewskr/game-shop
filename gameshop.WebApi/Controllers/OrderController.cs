@@ -36,6 +36,13 @@ namespace gameshop.WebApi.Controllers
             return Json(z);
         }
 
+        [HttpGet("filter")]
+        public async Task<IActionResult> GetByCartID(int cartId)
+        {
+            IEnumerable<OrderDTO> z = await _service.GetByCartID(cartId);
+            return Json(z);
+        }
+
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] CreateOrder order)
         {

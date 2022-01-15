@@ -36,6 +36,13 @@ namespace gameshop.WebApi.Controllers
             return Json(z);
         }
 
+        [HttpGet("user-{id}")]
+        public async Task<IActionResult> GetUserCart(int id)
+        {
+            CartDTO z = await _service.GetUserCart(id);
+            return Json(z);
+        }
+
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] CreateCart cart)
         {

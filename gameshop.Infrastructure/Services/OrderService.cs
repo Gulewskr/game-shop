@@ -59,6 +59,18 @@ namespace gameshop.Infrastructure.Services
             });
         }
 
+        public async Task<IEnumerable<OrderDTO>> GetByCartID(int id)
+        {
+            var z = await orderRepository.GetByCartIDAsync(id);
+            return z.Select(order => new OrderDTO()
+            {
+                Id = order.Id,
+                GameID = order.GameID,
+                Amount = order.Amount,
+                CartID = order.CartID
+            });
+        }
+
         public async Task Update(OrderDTO order)
         {
             if (order == null) throw new ArgumentNullException("developer must have value");

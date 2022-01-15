@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
@@ -13,8 +14,8 @@ namespace gameshop.Core.Domain
         public OrderStatus Status { get; set; }
         public DateTime CreateTime { get; set; }
         public DateTime LastChange { get; set; }
-        public int UserID { get; set; }
+        public int UserId { get; set; }
         [ForeignKey("UserID")]
-        public User User { get; set; }
+        public virtual IdentityUser IdentityUser { get; set; }
     }
 }

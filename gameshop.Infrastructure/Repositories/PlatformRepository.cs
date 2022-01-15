@@ -59,7 +59,7 @@ namespace gameshop.Infrastructure.Repositories
             try
             {
                 var z = _appDbContext.Platforms.FirstOrDefault(x => x.Id == o.Id);
-                z.ImgSrc = o.ImgSrc;
+                z.ImageURL = o.ImageURL;
                 z.Name = o.Name;
 
                 _appDbContext.SaveChanges();

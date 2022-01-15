@@ -54,6 +54,11 @@ namespace gameshop.Infrastructure.Repositories
             return await Task.FromResult(_appDbContext.Orders.FirstOrDefault(x => x.Id == id));
         }
 
+        public async Task<IEnumerable<Order>> GetByCartIDAsync(int id)
+        {
+            return await Task.FromResult(_appDbContext.Orders.Where(x => x.CartID == id));
+        }
+
         public async Task UpdataeAsync(Order o)
         {
             try
