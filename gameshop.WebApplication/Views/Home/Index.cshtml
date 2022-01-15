@@ -1,8 +1,110 @@
-﻿@{
+﻿@using gameshop.WebApplication.Controllers;
+@{
     ViewData["Title"] = "Home Page";
+    List<GameVM> games = await StaticPublicRequests.GetGames();
+    List<CategoryVM> categories = await StaticPublicRequests.GetCategories();
+    List<PlatformVM> platforms = await StaticPublicRequests.GetPlatforms();
+    List<CompanyVM> publishers = await StaticPublicRequests.GetPublishers();
+    List<CompanyVM> developers = await StaticPublicRequests.GetDevelopers();
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<!--<h1 class="display-4">Welcome</h1>
+<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core POGU</a>.</p>
+    -->
+@if (games.Count > 0)
+{
+    <!-- Slider Area -->
+    <section class="hero-slider">
+        <!-- Single Slider -->
+        <div class="single-slider">
+            <div class="container">
+                <div class="row no-gutters">
+                    <div class="col-lg-9 offset-lg-3 col-12">
+                        <div class="text-inner">
+                            <div class="row">
+                                <div class="col-lg-7 col-12">
+                                    <div class="hero-text">
+                                        <h1><span>TEST NEWEST GAME</span>@games[0].Name</h1>
+                                        <p>@games[0].Description.Substring(0, 100) ...</p>
+                                        <div class="button">
+                                            <a href="#" class="btn">Shop Now!</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ End Single Slider -->
+    </section>
+    <!--/ End Slider Area -->
+}
+@if (games.Count > 0)
+{
+    <section class="small-banner section">
+        <div class="container-fluid">
+            <div class="row">
+                @await Html.PartialAsync("~/Views/Partial/SingleGameMainBanner.cshtml", games[0], new ViewDataDictionary(ViewData)
+                        {
+                            { "Category", categories.FirstOrDefault(x => x.Id == games[0].CategoryID).Name },
+                            { "Developer", developers.FirstOrDefault(x => x.Id == games[0].DeveloperID).Name },
+                            //{ "Publisher", publishers.FirstOrDefault(x => x.Id == games[0].PublisherID).Name },
+                        })
+                @await Html.PartialAsync("~/Views/Partial/SingleGameMainBanner.cshtml", games[0], new ViewDataDictionary(ViewData)
+                        {
+                            { "Category", categories.FirstOrDefault(x => x.Id == games[0].CategoryID).Name },
+                            { "Developer", developers.FirstOrDefault(x => x.Id == games[0].DeveloperID).Name },
+                            //{ "Publisher", publishers.FirstOrDefault(x => x.Id == games[0].PublisherID).Name },
+                        })
+                @await Html.PartialAsync("~/Views/Partial/SingleGameMainBanner.cshtml", games[0], new ViewDataDictionary(ViewData)
+                        {
+                            { "Category", categories.FirstOrDefault(x => x.Id == games[0].CategoryID).Name },
+                            { "Developer", developers.FirstOrDefault(x => x.Id == games[0].DeveloperID).Name },
+                            //{ "Publisher", publishers.FirstOrDefault(x => x.Id == games[0].PublisherID).Name },
+                        })
+            </div>
+        </div>
+    </section>
+}
+
+<!-- Start Product Area -->
+<div class="product-area section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-title">
+                    <h2>Featured Items</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="product-info">
+                    <div class="tab-content" id="myTabContent">
+                        <!-- Start Single Tab -->
+                        <div class="tab-pane fade show active" id="man" role="tabpanel">
+                            <div class="tab-single">
+                                <div class="row">
+                                    @foreach (GameVM game in games)
+                                    {
+                                        @await Html.PartialAsync("~/Views/Partial/SingleGameBanner.cshtml", game, new ViewDataDictionary(ViewData)
+                                        {
+                                            { "Category", categories.FirstOrDefault(x => x.Id == game.CategoryID).Name },
+                                            { "Developer", developers.FirstOrDefault(x => x.Id == game.DeveloperID).Name },
+                                            //{ "Publisher", publishers.FirstOrDefault(x => x.Id == games[0].PublisherID).Name },
+                                        })
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <!--/ End Single Tab -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+<!-- End Product Area -->

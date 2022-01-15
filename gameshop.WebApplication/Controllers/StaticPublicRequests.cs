@@ -18,19 +18,26 @@ namespace gameshop.WebApplication.Controllers
             //var token = AccountController.TokenString;
             List<CategoryVM> list = new List<CategoryVM>();
 
-            using (var httpClient = new HttpClient())
+            try
             {
-                httpClient.DefaultRequestHeaders.Clear();
-                //httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-
-                System.Diagnostics.Debug.WriteLine(httpClient.DefaultRequestHeaders);
-                using (var response = await httpClient.GetAsync(_restpath))
+                using (var httpClient = new HttpClient())
                 {
-                    string apiResponse = await response.Content.ReadAsStringAsync();
-                    list = JsonConvert.DeserializeObject<List<CategoryVM>>(apiResponse);
+                    httpClient.DefaultRequestHeaders.Clear();
+                    //httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-                    System.Diagnostics.Debug.WriteLine(response.StatusCode);
+                    System.Diagnostics.Debug.WriteLine(httpClient.DefaultRequestHeaders);
+                    using (var response = await httpClient.GetAsync(_restpath))
+                    {
+                        string apiResponse = await response.Content.ReadAsStringAsync();
+                        list = JsonConvert.DeserializeObject<List<CategoryVM>>(apiResponse);
+
+                        System.Diagnostics.Debug.WriteLine(response.StatusCode);
+                    }
                 }
+            }
+            catch (Exception e)
+            {
+                
             }
 
             return list;
@@ -42,22 +49,27 @@ namespace gameshop.WebApplication.Controllers
 
             //var token = AccountController.TokenString;
             List<PlatformVM> list = new List<PlatformVM>();
-
-            using (var httpClient = new HttpClient())
+            try
             {
-                httpClient.DefaultRequestHeaders.Clear();
-                //httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-
-                System.Diagnostics.Debug.WriteLine(httpClient.DefaultRequestHeaders);
-                using (var response = await httpClient.GetAsync(_restpath))
+                using (var httpClient = new HttpClient())
                 {
-                    string apiResponse = await response.Content.ReadAsStringAsync();
-                    list = JsonConvert.DeserializeObject<List<PlatformVM>>(apiResponse);
+                    httpClient.DefaultRequestHeaders.Clear();
+                    //httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-                    System.Diagnostics.Debug.WriteLine(response.StatusCode);
+                    System.Diagnostics.Debug.WriteLine(httpClient.DefaultRequestHeaders);
+                    using (var response = await httpClient.GetAsync(_restpath))
+                    {
+                        string apiResponse = await response.Content.ReadAsStringAsync();
+                        list = JsonConvert.DeserializeObject<List<PlatformVM>>(apiResponse);
+
+                        System.Diagnostics.Debug.WriteLine(response.StatusCode);
+                    }
                 }
             }
+            catch (Exception e)
+            {
 
+            }
             return list;
         }
 
@@ -67,22 +79,27 @@ namespace gameshop.WebApplication.Controllers
 
             //var token = AccountController.TokenString;
             List<CompanyVM> list = new List<CompanyVM>();
-
-            using (var httpClient = new HttpClient())
+            try
             {
-                httpClient.DefaultRequestHeaders.Clear();
-                //httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-
-                System.Diagnostics.Debug.WriteLine(httpClient.DefaultRequestHeaders);
-                using (var response = await httpClient.GetAsync(_restpath))
+                using (var httpClient = new HttpClient())
                 {
-                    string apiResponse = await response.Content.ReadAsStringAsync();
-                    list = JsonConvert.DeserializeObject<List<CompanyVM>>(apiResponse);
+                    httpClient.DefaultRequestHeaders.Clear();
+                    //httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-                    System.Diagnostics.Debug.WriteLine(response.StatusCode);
+                    System.Diagnostics.Debug.WriteLine(httpClient.DefaultRequestHeaders);
+                    using (var response = await httpClient.GetAsync(_restpath))
+                    {
+                        string apiResponse = await response.Content.ReadAsStringAsync();
+                        list = JsonConvert.DeserializeObject<List<CompanyVM>>(apiResponse);
+
+                        System.Diagnostics.Debug.WriteLine(response.StatusCode);
+                    }
                 }
             }
+            catch (Exception e)
+            {
 
+            }
             return list;
         }
 
@@ -92,22 +109,58 @@ namespace gameshop.WebApplication.Controllers
 
             //var token = AccountController.TokenString;
             List<CompanyVM> list = new List<CompanyVM>();
-
-            using (var httpClient = new HttpClient())
+            try
             {
-                httpClient.DefaultRequestHeaders.Clear();
-                //httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-
-                System.Diagnostics.Debug.WriteLine(httpClient.DefaultRequestHeaders);
-                using (var response = await httpClient.GetAsync(_restpath))
+                using (var httpClient = new HttpClient())
                 {
-                    string apiResponse = await response.Content.ReadAsStringAsync();
-                    list = JsonConvert.DeserializeObject<List<CompanyVM>>(apiResponse);
+                    httpClient.DefaultRequestHeaders.Clear();
+                    //httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-                    System.Diagnostics.Debug.WriteLine(response.StatusCode);
+                    System.Diagnostics.Debug.WriteLine(httpClient.DefaultRequestHeaders);
+                    using (var response = await httpClient.GetAsync(_restpath))
+                    {
+                        string apiResponse = await response.Content.ReadAsStringAsync();
+                        list = JsonConvert.DeserializeObject<List<CompanyVM>>(apiResponse);
+
+                        System.Diagnostics.Debug.WriteLine(response.StatusCode);
+                    }
                 }
             }
+            catch (Exception e)
+            {
 
+            }
+
+            return list;
+        }
+
+        public static async Task<List<GameVM>> GetGames()
+        {
+            string _restpath = httpAPI + "Game";
+
+            //var token = AccountController.TokenString;
+            List<GameVM> list = new List<GameVM>();
+            try
+            {
+                using (var httpClient = new HttpClient())
+                {
+                    httpClient.DefaultRequestHeaders.Clear();
+                    //httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                    System.Diagnostics.Debug.WriteLine(httpClient.DefaultRequestHeaders);
+                    using (var response = await httpClient.GetAsync(_restpath))
+                    {
+                        string apiResponse = await response.Content.ReadAsStringAsync();
+                        list = JsonConvert.DeserializeObject<List<GameVM>>(apiResponse);
+
+                        System.Diagnostics.Debug.WriteLine(response.StatusCode);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
             return list;
         }
     }

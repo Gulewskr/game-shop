@@ -1,31 +1,12 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using System.Net.Http;
 @using Newtonsoft.Json;
+@using gameshop.WebApplication.Controllers; 
 @inject SignInManager<IdentityUser> SignInManager
 
 @{
-    string _hostpath = "https://localhost:5001/";
-    List<CategoryVM> categories = new List<CategoryVM>();
-    List<PlatformVM> platforms = new List<PlatformVM>();
-
-    using (var httpClient = new HttpClient())
-    {
-        using (var response = await httpClient.GetAsync(_hostpath + "Category"))
-        {
-            string apiResponse = await response.Content.ReadAsStringAsync();
-            categories = JsonConvert.DeserializeObject<List<CategoryVM>>(apiResponse);
-
-            System.Diagnostics.Debug.WriteLine(response.StatusCode);
-        }
-        using (var response = await httpClient.GetAsync(_hostpath + "Platform"))
-        {
-            string apiResponse = await response.Content.ReadAsStringAsync();
-            platforms = JsonConvert.DeserializeObject<List<PlatformVM>>(apiResponse);
-
-            System.Diagnostics.Debug.WriteLine(response.StatusCode);
-        }
-    }
-
+    List<CategoryVM> categories = await StaticPublicRequests.GetCategories();
+    List<PlatformVM> platforms = await StaticPublicRequests.GetPlatforms();
 }
 
 <!DOCTYPE html>
@@ -289,10 +270,19 @@
         <!--/ End Header Inner -->
     </header>
     <!--/ End Header -->
-    <div class="container">
+    <div class="container body-container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
+        <style>
+            .body-container {
+                /*remove the container default padding attribute*/
+                padding-left: 0px !important;
+                padding-right: 0px !important;
+                /*increase width as per your need*/
+                max-width: 100%;
+            }
+        </style>
     </div>
     <!-- Start Shop Services Area -->
     <section class="shop-services section home">

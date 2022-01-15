@@ -13,5 +13,6 @@ namespace gameshop.Core.Repositories
         Task DelAsync(int id);
         Task<GameByPlatformSpec> GetAsync(int id);
         Task<IEnumerable<GameByPlatformSpec>> BrowseAllAsync();
+        Task<IEnumerable<GameByPlatformSpec>> GetByGame(int id);
     }
 }

@@ -57,14 +57,14 @@ namespace gameshop.Infrastructure.Repositories
         public async Task UpdataeAsync(Game o)
         {
             try
-            {
+            { 
+                //_appDbContext.Games.Update(o);
                 var z = _appDbContext.Games.FirstOrDefault(x => x.Id == o.Id);
                 z.Name = o.Name;
                 z.Description = o.Description;
                 z.CategoryID = o.CategoryID;
                 z.DeveloperID = o.DeveloperID;
                 z.PublisherID = o.PublisherID;
-
                 _appDbContext.SaveChanges();
                 await Task.CompletedTask;
             }

@@ -6,6 +6,7 @@ namespace gameshop.Infrastructure.Commands
 {
     public class CreateGameBP
     {
+        public int Id { get; set; }
         public int GameID { get; set; }
         public int PlatformID { get; set; }
         public DateTime ReleaseDate { get; set; }

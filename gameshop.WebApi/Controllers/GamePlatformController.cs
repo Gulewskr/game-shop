@@ -34,17 +34,39 @@ namespace gameshop.WebApi.Controllers
             return Json(z);
         }
 
+        [HttpGet("filter")]
+        public async Task<IActionResult> GetByFilter(int id)
+        {
+            IEnumerable<GamePlatformDTO> z = await _service.GetGame(id);
+            return Json(z);
+        }
+
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] CreateGameBP game)
         {
-            await _service.Add(new GamePlatformDTO()
+            if(game.Id != 0)
+            { 
+                await _service.Update(new GamePlatformDTO()
+                {
+                    Id = game.Id,
+                    ReleaseDate = game.ReleaseDate,
+                    AmountEnable = game.AmountEnable,
+                    AmountReserved = game.AmountReserved,
+                    GameID = game.GameID,
+                    PlatformID = game.PlatformID
+                });
+            }
+            else
             {
-                ReleaseDate = game.ReleaseDate,
-                AmountEnable = game.AmountEnable,
-                AmountReserved = game.AmountReserved,
-                GameID = game.GameID,
-                PlatformID = game.PlatformID
-            });
+                await _service.Add(new GamePlatformDTO()
+                {
+                    ReleaseDate = game.ReleaseDate,
+                    AmountEnable = game.AmountEnable,
+                    AmountReserved = game.AmountReserved,
+                    GameID = game.GameID,
+                    PlatformID = game.PlatformID
+                });
+            }
             return NoContent();
         }
 

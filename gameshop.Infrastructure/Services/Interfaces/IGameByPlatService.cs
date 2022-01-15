@@ -13,5 +13,6 @@ namespace gameshop.Infrastructure.Services
         Task Add(GamePlatformDTO o);
         Task Update(GamePlatformDTO o);
         Task Delete(int id);
+        Task<IEnumerable<GamePlatformDTO>> GetGame(int id);
     }
 }

@@ -1,0 +1,78 @@
+﻿@model gameshop.WebApplication.Models.GameVM
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>GameVM</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CategoryID)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CategoryID)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PublisherID)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PublisherID)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DeveloperID)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DeveloperID)
+        </dd>
+    </dl>
+</div>
+<div>
+    @{
+        List<GameByPlat> games = ViewBag.GamesByPlat;
+        if (ViewBag.Platforms != null)
+            foreach (PlatformVM plat in ViewBag.Platforms)
+            {
+        <div>
+            @{
+                GameByPlat act = games.FirstOrDefault(x => x.PlatformID == plat.Id);
+                if (act == null) act = new GameByPlat()
+                {
+                    Id = 0,
+                    GameID = Model.Id,
+                    PlatformID = plat.Id,
+                };
+                @await Html.PartialAsync("~/Views/Game/CreateGameByPlat.cshtml", act, new ViewDataDictionary(ViewData)
+                        {
+                            { "platform", plat.Name }
+                        });
+            }
+        </div>
+            }
+    }
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>

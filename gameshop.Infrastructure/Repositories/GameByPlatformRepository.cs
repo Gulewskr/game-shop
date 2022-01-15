@@ -54,17 +54,25 @@ namespace gameshop.Infrastructure.Repositories
             return await Task.FromResult(_appDbContext.GamesByPlatform.FirstOrDefault(x => x.Id == id));
         }
 
+        public async Task<IEnumerable<GameByPlatformSpec>> GetByGame(int id)
+        {
+            return await Task.FromResult(_appDbContext.GamesByPlatform.Where(x => x.GameID == id));
+        }
+
         public async Task UpdataeAsync(GameByPlatformSpec o)
         {
             try
             {
-                var z = _appDbContext.GamesByPlatform.FirstOrDefault(x => x.Id == o.Id);
-                z.GameID = o.GameID;
+                Console.WriteLine($"{o.Id} {o.GameID} {o.Platform} {o.AmountEnable} {o.AmountReserved}");
+                _appDbContext.GamesByPlatform.Update(o);
+                /*
+                 * var z = _appDbContext.GamesByPlatform.FirstOrDefault(x => x.Id == o.Id);
+                //z.GameID = o.GameID;
                 z.AmountEnable = o.AmountEnable;
                 z.AmountReserved = o.AmountReserved;
-                z.PlatformID = o.PlatformID;
+                //z.PlatformID = o.PlatformID;
                 z.ReleaseDate = o.ReleaseDate;
-
+                */
                 _appDbContext.SaveChanges();
                 await Task.CompletedTask;
             }

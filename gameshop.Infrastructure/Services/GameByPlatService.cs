@@ -65,6 +65,20 @@ namespace gameshop.Infrastructure.Services
             });
         }
 
+        public async Task<IEnumerable<GamePlatformDTO>> GetGame(int id)
+        {
+            var z = await gameRepository.GetByGame(id);
+            return z.Select(game => new GamePlatformDTO()
+            {
+                Id = game.Id,
+                GameID = game.GameID,
+                AmountEnable = game.AmountEnable,
+                AmountReserved = game.AmountReserved,
+                PlatformID = game.PlatformID,
+                ReleaseDate = game.ReleaseDate
+            });
+        }
+
         public async Task Update(GamePlatformDTO game)
         {
             if (game == null) throw new ArgumentNullException("developer must have value");
