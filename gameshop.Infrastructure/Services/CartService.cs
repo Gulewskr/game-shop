@@ -24,7 +24,7 @@ namespace gameshop.Infrastructure.Services
                 CreateTime = cart.CreateTime,
                 LastChange = cart.LastChange,
                 Status = cart.Status,
-                UserId = cart.UserID,
+                UserID = cart.UserID,
             });
             return;
         }
@@ -45,7 +45,7 @@ namespace gameshop.Infrastructure.Services
                 CreateTime = z.CreateTime,
                 LastChange = z.LastChange,
                 Status = z.Status,
-                UserID = z.UserId,
+                UserID = z.UserID,
             };
         }
 
@@ -58,11 +58,11 @@ namespace gameshop.Infrastructure.Services
                 CreateTime = z.CreateTime,
                 LastChange = z.LastChange,
                 Status = z.Status,
-                UserID = z.UserId
+                UserID = z.UserID
             });
         }
 
-        public async Task<CartDTO> GetUserCart(int id)
+        public async Task<CartDTO> GetUserCart(string id)
         {
             var z = await cartRepository.GetUserCart(id);
             return new CartDTO()
@@ -71,7 +71,7 @@ namespace gameshop.Infrastructure.Services
                 CreateTime = z.CreateTime,
                 LastChange = z.LastChange,
                 Status = z.Status,
-                UserID = z.UserId
+                UserID = z.UserID
             };
         }
 
@@ -84,7 +84,7 @@ namespace gameshop.Infrastructure.Services
                 CreateTime = cart.CreateTime,
                 LastChange = cart.LastChange,
                 Status = cart.Status,
-                UserId = cart.UserID
+                UserID = cart.UserID
             });
             return;
         }

@@ -27,7 +27,8 @@ namespace gameshop.Infrastructure.Services
                 Surname = user.Surname,
                 BornDate = user.BornDate,
                 Email = user.Email,
-                Phonenumber = user.Phonenumber
+                Phonenumber = user.Phonenumber,
+                ImageURL = user.ImageURL
             });
             return;
         }
@@ -49,7 +50,8 @@ namespace gameshop.Infrastructure.Services
                 Surname = z.Surname,
                 BornDate = z.BornDate,
                 Email = z.Email,
-                Phonenumber = z.Phonenumber
+                Phonenumber = z.Phonenumber,
+                ImageURL = z.ImageURL
             };
         }
 
@@ -63,7 +65,8 @@ namespace gameshop.Infrastructure.Services
                 Surname = user.Surname,
                 BornDate = user.BornDate,
                 Email = user.Email,
-                Phonenumber = user.Phonenumber
+                Phonenumber = user.Phonenumber,
+                ImageURL = user.ImageURL
             });
         }
 
@@ -77,7 +80,8 @@ namespace gameshop.Infrastructure.Services
                 Surname = user.Surname,
                 BornDate = user.BornDate,
                 Email = user.Email,
-                Phonenumber = user.Phonenumber
+                Phonenumber = user.Phonenumber,
+                ImageURL = user.ImageURL
             });
             return;
         }

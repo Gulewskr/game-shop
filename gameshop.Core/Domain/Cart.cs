@@ -14,7 +14,7 @@ namespace gameshop.Core.Domain
         public OrderStatus Status { get; set; }
         public DateTime CreateTime { get; set; }
         public DateTime LastChange { get; set; }
-        public int UserId { get; set; }
+        public string UserID { get; set; }
         [ForeignKey("UserID")]
         public virtual IdentityUser IdentityUser { get; set; }
     }

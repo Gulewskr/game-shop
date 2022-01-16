@@ -62,6 +62,7 @@ namespace gameshop.Infrastructure.Repositories
                 var z = _appDbContext.Games.FirstOrDefault(x => x.Id == o.Id);
                 z.Name = o.Name;
                 z.Description = o.Description;
+                z.ImageURL = o.ImageURL;
                 z.CategoryID = o.CategoryID;
                 z.DeveloperID = o.DeveloperID;
                 z.PublisherID = o.PublisherID;

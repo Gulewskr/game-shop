@@ -13,6 +13,6 @@ namespace gameshop.Infrastructure.Services
         Task Add(CartDTO o);
         Task Update(CartDTO o);
         Task Delete(int id);
-        Task<CartDTO> GetUserCart(int id);
+        Task<CartDTO> GetUserCart(string id);
     }
 }

@@ -12,6 +12,6 @@ namespace gameshop.Infrastructure.DTO
         public OrderStatus Status { get; set; }
         public DateTime CreateTime { get; set; }
         public DateTime LastChange { get; set; }
-        public int UserID { get; set; }
+        public string UserID { get; set; }
     }
 }

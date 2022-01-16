@@ -10,8 +10,8 @@ using gameshop.Infrastructure.Repositories;
 namespace gameshop.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220107005643_dodanie mechanizmu identity")]
-    partial class dodaniemechanizmuidentity
+    [Migration("20220115235428_MigrationV2")]
+    partial class MigrationV2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -233,8 +233,8 @@ namespace gameshop.Infrastructure.Migrations
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserID")
-                        .HasColumnType("int");
+                    b.Property<string>("UserID")
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
@@ -277,6 +277,9 @@ namespace gameshop.Infrastructure.Migrations
                     b.Property<string>("EMail")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ImageURL")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -300,6 +303,9 @@ namespace gameshop.Infrastructure.Migrations
 
                     b.Property<int>("DeveloperID")
                         .HasColumnType("int");
+
+                    b.Property<string>("ImageURL")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -381,7 +387,7 @@ namespace gameshop.Infrastructure.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<string>("ImgSrc")
+                    b.Property<string>("ImageURL")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -411,6 +417,9 @@ namespace gameshop.Infrastructure.Migrations
                     b.Property<string>("EMail")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ImageURL")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -435,6 +444,9 @@ namespace gameshop.Infrastructure.Migrations
                     b.Property<string>("Forename")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ImageURL")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Phonenumber")
                         .HasColumnType("nvarchar(max)");
 
@@ -442,9 +454,11 @@ namespace gameshop.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("User");
                 });
@@ -502,13 +516,11 @@ namespace gameshop.Infrastructure.Migrations
 
             modelBuilder.Entity("gameshop.Core.Domain.Cart", b =>
                 {
-                    b.HasOne("gameshop.Core.Domain.User", "User")
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "IdentityUser")
                         .WithMany()
-                        .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserID");
 
-                    b.Navigation("User");
+                    b.Navigation("IdentityUser");
                 });
 
             modelBuilder.Entity("gameshop.Core.Domain.Game", b =>
@@ -574,6 +586,15 @@ namespace gameshop.Infrastructure.Migrations
                     b.Navigation("Cart");
 
                     b.Navigation("Game");
+                });
+
+            modelBuilder.Entity("gameshop.Core.Domain.User", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "IdentityUser")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("IdentityUser");
                 });
 #pragma warning restore 612, 618
         }

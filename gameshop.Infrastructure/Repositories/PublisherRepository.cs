@@ -64,6 +64,7 @@ namespace gameshop.Infrastructure.Repositories
                 z.Country = o.Country;
                 z.City = o.City;
                 z.Address = o.Address;
+                z.ImageURL = o.ImageURL;
 
                 _appDbContext.SaveChanges();
                 await Task.CompletedTask;

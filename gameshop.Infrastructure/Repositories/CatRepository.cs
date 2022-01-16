@@ -54,18 +54,18 @@ namespace gameshop.Infrastructure.Repositories
             return await Task.FromResult(_appDbContext.Carts.FirstOrDefault(x => x.Id == id));
         }
 
-        public async Task<Cart> GetUserCart(int id)
+        public async Task<Cart> GetUserCart(string id)
         {
             try
             {
-                var c = _appDbContext.Carts.FirstOrDefault(x => x.UserId == id && x.Status == OrderStatus.Ongoing);
+                var c = _appDbContext.Carts.FirstOrDefault(x => x.UserID == id && x.Status == OrderStatus.Ongoing);
                 if (c == null)
                 {
                     c = new Cart()
                     {
                         CreateTime = DateTime.Now,
                         LastChange = DateTime.Now,
-                        UserId = id
+                        UserID = id
                     };
                     _appDbContext.Carts.Add(c);
 
@@ -85,7 +85,7 @@ namespace gameshop.Infrastructure.Repositories
                 z.CreateTime = o.CreateTime;
                 z.LastChange = o.LastChange;
                 z.Status = o.Status;
-                z.UserId = o.UserId;
+                z.UserID = o.UserID;
 
                 _appDbContext.SaveChanges();
                 await Task.CompletedTask;

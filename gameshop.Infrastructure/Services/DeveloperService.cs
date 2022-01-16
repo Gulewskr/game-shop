@@ -25,7 +25,8 @@ namespace gameshop.Infrastructure.Services
                 Address = developer.Address,
                 City = developer.City,
                 Country = developer.Country,
-                EMail = developer.EMail
+                EMail = developer.EMail,
+                ImageURL = developer.ImageURL
             });
             return;
         }
@@ -47,7 +48,8 @@ namespace gameshop.Infrastructure.Services
                 Address = z.Address,
                 City = z.City,
                 Country = z.Country,
-                EMail = z.EMail
+                EMail = z.EMail,
+                ImageURL = z.ImageURL
             };
         }
 
@@ -61,7 +63,8 @@ namespace gameshop.Infrastructure.Services
                 Address = x.Address,
                 City = x.City,
                 Country = x.Country,
-                EMail = x.EMail
+                EMail = x.EMail,
+                ImageURL = x.ImageURL
             });
         }
 
@@ -75,7 +78,8 @@ namespace gameshop.Infrastructure.Services
                 Address = developer.Address,
                 City = developer.City,
                 Country = developer.Country,
-                EMail = developer.EMail
+                EMail = developer.EMail,
+                ImageURL = developer.ImageURL
             });
             return;
         }

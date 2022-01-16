@@ -52,7 +52,6 @@ namespace gameshop.Infrastructure.Repositories
         public async Task<User> GetAsync(int id)
         {
             return await Task.FromResult(_appDbContext.User.FirstOrDefault(x => x.Id == id));
-            //return null;
         }
 
         public async Task UpdataeAsync(User o)
@@ -60,15 +59,11 @@ namespace gameshop.Infrastructure.Repositories
             try
             {
                 var z = _appDbContext.User.FirstOrDefault(x => x.Id == o.Id);
-                //var user = await _userManager.FindByIdAsync(z.Id);
-                //if (user != null)
-                //{
-                //    user.Email = o.Email;
-                //}
                 z.Email = o.Email;
                 z.Forename = o.Forename;
                 z.Surname = o.Surname;
                 z.BornDate = o.BornDate;
+                z.ImageURL = o.ImageURL;
 
                 _appDbContext.SaveChanges();
                 await Task.CompletedTask;

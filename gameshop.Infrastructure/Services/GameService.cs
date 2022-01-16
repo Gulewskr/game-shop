@@ -25,7 +25,8 @@ namespace gameshop.Infrastructure.Services
                 Description = game.Description,
                 CategoryID = game.CategoryID,
                 DeveloperID = game.DeveloperID,
-                PublisherID = game.PublisherID
+                PublisherID = game.PublisherID,
+                ImageURL = game.ImageURL
             });
             return;
         }
@@ -47,7 +48,8 @@ namespace gameshop.Infrastructure.Services
                 Description = z.Description,
                 CategoryID = z.CategoryID,
                 DeveloperID = z.DeveloperID,
-                PublisherID = z.PublisherID
+                PublisherID = z.PublisherID,
+                ImageURL = z.ImageURL
             };
         }
 
@@ -61,7 +63,8 @@ namespace gameshop.Infrastructure.Services
                 Description = game.Description,
                 CategoryID = game.CategoryID,
                 DeveloperID = game.DeveloperID,
-                PublisherID = game.PublisherID
+                PublisherID = game.PublisherID,
+                ImageURL = game.ImageURL
             });
         }
 
@@ -75,7 +78,8 @@ namespace gameshop.Infrastructure.Services
                 Description = game.Description,
                 CategoryID = game.CategoryID,
                 DeveloperID = game.DeveloperID,
-                PublisherID = game.PublisherID
+                PublisherID = game.PublisherID,
+                ImageURL = game.ImageURL
             });
             return;
         }
