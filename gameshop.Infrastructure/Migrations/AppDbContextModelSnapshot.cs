@@ -575,7 +575,7 @@ namespace gameshop.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("gameshop.Core.Domain.Game", "Game")
+                    b.HasOne("gameshop.Core.Domain.GameByPlatformSpec", "Game")
                         .WithMany()
                         .HasForeignKey("GameID")
                         .OnDelete(DeleteBehavior.Cascade)

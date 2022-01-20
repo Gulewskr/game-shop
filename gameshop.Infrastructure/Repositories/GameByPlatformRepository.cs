@@ -1,5 +1,6 @@
 ﻿using gameshop.Core.Domain;
 using gameshop.Core.Repositories;
+using gameshop.Core.Domain.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,6 +53,30 @@ namespace gameshop.Infrastructure.Repositories
         public async Task<GameByPlatformSpec> GetAsync(int id)
         {
             return await Task.FromResult(_appDbContext.GamesByPlatform.FirstOrDefault(x => x.Id == id));
+        }
+        public async Task<GameDetailsDTO> GetDetailedAsync(int id)
+        {
+            var g = await Task.FromResult(_appDbContext.GamesByPlatform.FirstOrDefault(x => x.Id == id));
+            if(g != null)
+            {
+                var game = await Task.FromResult(_appDbContext.Games.FirstOrDefault(x => x.Id == g.GameID));
+                var platform = await Task.FromResult(_appDbContext.Platforms.FirstOrDefault(x => x.Id == g.PlatformID));
+                return new GameDetailsDTO()
+                {
+                    Id = g.Id,
+                    ReleaseDate = g.ReleaseDate,
+                    GameID = game.Id,
+                    Game_ImageURL = game.ImageURL,
+                    Game_Name = game.Name,
+                    PlatformID = platform.Id,
+                    Platform_ImgSrc = platform.ImageURL,
+                    Platform_Name = platform.Name
+                };
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public async Task<IEnumerable<GameByPlatformSpec>> GetByGame(int id)

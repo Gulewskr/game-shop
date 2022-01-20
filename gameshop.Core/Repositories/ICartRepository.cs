@@ -14,5 +14,6 @@ namespace gameshop.Core.Repositories
         Task<Cart> GetAsync(int id);
         Task<IEnumerable<Cart>> BrowseAllAsync();
         Task<Cart> GetUserCart(string id);
+        Task AddOrderAsync(Order order);
     }
 }

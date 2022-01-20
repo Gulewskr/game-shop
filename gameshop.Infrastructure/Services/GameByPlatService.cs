@@ -18,13 +18,13 @@ namespace gameshop.Infrastructure.Services
         }
         public async Task Add(GamePlatformDTO game)
         {
-            if (game == null) throw new ArgumentNullException("coach must have value");
+            if (game == null) throw new ArgumentNullException("game must have value");
             await gameRepository.AddAsync(new GameByPlatformSpec()
             {
                 GameID = game.GameID,
+                PlatformID = game.PlatformID,
                 AmountEnable = game.AmountEnable,
                 AmountReserved = game.AmountReserved,
-                PlatformID = game.PlatformID,
                 ReleaseDate = game.ReleaseDate
             });
             return;

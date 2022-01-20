@@ -30,6 +30,20 @@ namespace gameshop.Infrastructure.Repositories
             }
         }
 
+        public async Task AddOrderAsync(Order order)
+        {
+            try
+            {
+                _appDbContext.Orders.Add(order);
+                _appDbContext.SaveChanges();
+                await Task.CompletedTask;
+            }
+            catch (Exception ex)
+            {
+                await Task.FromException(ex);
+            }
+        }
+
         public async Task<IEnumerable<Cart>> BrowseAllAsync()
         {
             return await Task.FromResult(_appDbContext.Carts);
@@ -61,14 +75,14 @@ namespace gameshop.Infrastructure.Repositories
                 var c = _appDbContext.Carts.FirstOrDefault(x => x.UserID == id && x.Status == OrderStatus.Ongoing);
                 if (c == null)
                 {
-                    c = new Cart()
+                    await AddAsync(new Cart()
                     {
+                        Status = OrderStatus.Ongoing,
                         CreateTime = DateTime.Now,
                         LastChange = DateTime.Now,
                         UserID = id
-                    };
-                    _appDbContext.Carts.Add(c);
-
+                    });
+                    c = _appDbContext.Carts.FirstOrDefault(x => x.UserID == id && x.Status == OrderStatus.Ongoing);
                 }
                 return await Task.FromResult(c);
             }catch (Exception e)

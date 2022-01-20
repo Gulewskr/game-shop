@@ -347,9 +347,9 @@ namespace gameshop.Infrastructure.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Orders_Games_GameID",
+                        name: "FK_Orders_GamesByPlatform_GameID",
                         column: x => x.GameID,
-                        principalTable: "Games",
+                        principalTable: "GamesByPlatform",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -457,9 +457,6 @@ namespace gameshop.Infrastructure.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "GamesByPlatform");
-
-            migrationBuilder.DropTable(
                 name: "Orders");
 
             migrationBuilder.DropTable(
@@ -469,16 +466,19 @@ namespace gameshop.Infrastructure.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "Platform");
+                name: "Carts");
 
             migrationBuilder.DropTable(
-                name: "Carts");
+                name: "GamesByPlatform");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUsers");
 
             migrationBuilder.DropTable(
                 name: "Games");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                name: "Platform");
 
             migrationBuilder.DropTable(
                 name: "Categories");

@@ -14,5 +14,6 @@ namespace gameshop.Infrastructure.Services
         Task Update(CartDTO o);
         Task Delete(int id);
         Task<CartDTO> GetUserCart(string id);
+        Task AddOrder(OrderDTO orderDTO);
     }
 }

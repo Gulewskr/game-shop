@@ -51,7 +51,7 @@
 <div>
     @{
         List<GameByPlat> games = ViewBag.GamesByPlat;
-        if (ViewBag.Platforms != null)
+        if (ViewBag.Platforms != null && Model != null)
             foreach (PlatformVM plat in ViewBag.Platforms)
             {
         <div>

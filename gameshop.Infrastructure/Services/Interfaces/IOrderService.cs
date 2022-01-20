@@ -13,6 +13,6 @@ namespace gameshop.Infrastructure.Services
         Task Add(OrderDTO o);
         Task Update(OrderDTO o);
         Task Delete(int id);
-        Task<IEnumerable<OrderDTO>> GetByCartID(int id);
+        Task<IEnumerable<OrderDeatailDTO>> GetByCartID(int id);
     }
 }

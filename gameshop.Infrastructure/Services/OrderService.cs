@@ -12,9 +12,11 @@ namespace gameshop.Infrastructure.Services
     public class OrderService : IOrderService
     {
         private readonly IOrderRepository orderRepository;
-        public OrderService(IOrderRepository repository)
+        private readonly IGameByPlatformRepository gameRepository;
+        public OrderService(IOrderRepository repository, IGameByPlatformRepository repository2)
         {
             orderRepository = repository;
+            gameRepository = repository2;
         }
         public async Task Add(OrderDTO order)
         {
@@ -59,16 +61,28 @@ namespace gameshop.Infrastructure.Services
             });
         }
 
-        public async Task<IEnumerable<OrderDTO>> GetByCartID(int id)
+        public async Task<IEnumerable<OrderDeatailDTO>> GetByCartID(int id)
         {
             var z = await orderRepository.GetByCartIDAsync(id);
-            return z.Select(order => new OrderDTO()
-            {
-                Id = order.Id,
-                GameID = order.GameID,
-                Amount = order.Amount,
-                CartID = order.CartID
-            });
+            if (z.ToList().Count == 0) return new List<OrderDeatailDTO>();
+            var x = await Task.WhenAll(z.Select(async(order) =>  {
+                if (order == null) return new OrderDeatailDTO();
+                var g = await gameRepository.GetDetailedAsync(order.GameID);
+                if (g == null) return new OrderDeatailDTO();
+                return new OrderDeatailDTO()
+                {
+                    Id = order.Id,
+                    Amount = order.Amount,
+                    CartID = order.CartID,
+                    GameID = g.GameID,
+                    Game_ImageURL = g.Game_ImageURL,
+                    Game_Name = g.Game_Name,
+                    PlatformID = g.PlatformID,
+                    Platform_Name = g.Platform_Name,
+                    Platform_ImgSrc = g.Platform_ImgSrc
+                };
+            }));
+            return x;
         }
 
         public async Task Update(OrderDTO order)

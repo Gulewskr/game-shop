@@ -29,6 +29,18 @@ namespace gameshop.Infrastructure.Services
             return;
         }
 
+        public async Task AddOrder(OrderDTO orderDTO)
+        {
+            if(orderDTO == null) throw new ArgumentNullException("coach must have value");
+            await cartRepository.AddOrderAsync(new Order()
+            {
+                GameID = orderDTO.GameID,
+                Amount = orderDTO.Amount,
+                CartID = orderDTO.CartID
+            });
+            return;
+        }
+
         public async Task Delete(int id)
         {
             await cartRepository.DelAsync(id);

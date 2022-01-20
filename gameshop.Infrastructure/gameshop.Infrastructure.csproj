@@ -22,4 +22,8 @@
     <ProjectReference Include="..\gameshop.Core\gameshop.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>

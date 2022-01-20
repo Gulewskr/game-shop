@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebEssentials.AspNetCore.Pwa;
 
 namespace gameshop.WebApplication
 {
@@ -28,10 +29,17 @@ namespace gameshop.WebApplication
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<JWTOKEN>();
-            
+
 
             services.AddControllersWithViews();
             services.AddMvc().AddRazorRuntimeCompilation();
+            //dodanie PWA
+            //services.AddProgressiveWebApp();
+            services.AddServiceWorker(new PwaOptions
+            {
+                CacheId = "GameZoneCacheSW",
+                Strategy = ServiceWorkerStrategy.NetworkFirst
+            });
             services.AddDbContext<AppDbContext>(
                 options => {
                     options.UseSqlServer(Configuration.GetConnectionString("GameShopConnectionString"));

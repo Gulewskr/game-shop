@@ -1,4 +1,5 @@
 ﻿@model gameshop.WebApplication.Models.GameVM
+@using gameshop.WebApplication.Controllers;
 
 <div class="col-xl-3 col-lg-4 col-md-4 col-12">
     <div class="single-product">
@@ -19,7 +20,9 @@
             </div>
         </div>
         <div class="product-content">
-            <h3><a href="product-details.html">@Model.Name</a></h3>
+            <h3>
+                <a asp-area="" asp-controller="Game" asp-action="DetailsShop" asp-route-id="@Model.Id">@Model.Name</a>
+            </h3>
             <div class="product-price">
                 <span>@ViewData["Category"]</span>
             </div>

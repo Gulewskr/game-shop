@@ -78,46 +78,53 @@ namespace gameshop.WebApplication.Controllers
                 var user = new IdentityUser() { UserName = registerVM.Login };
                 var result = await _userManager.CreateAsync(user, registerVM.Password);
                 //var newID = await _signInManager.id.GetUserIdAsync(user);
-
-
                 if (result.Succeeded)
                 {
-                    //Dodanie roli użytkownika
-                    //await _userManager.AddToRoleAsync(user, "User");
+                    /*var _result = await _signInManager.PasswordSignInAsync(user, registerVM.Password, false, false);
 
-                    string _restpath = GetHostUrl().Content + "User";
-                    
-                    UserVM userVM = new UserVM()
-                    {
-                        UserId = user.Id,
-                        Forename = registerVM.Forename,
-                        Surname = registerVM.Surname,
-                        Email = registerVM.Email,
-                        Phonenumber = registerVM.Phonenumber,
-                        BornDate = registerVM.BornDate,
-                    };
-                    
-                    try
-                    {
-                        using var httpClient = new HttpClient();
-                        string jsonString = System.Text.Json.JsonSerializer.Serialize(userVM);
-                        var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+                    if (_result.Succeeded)
+                    {*/
+                        //Dodanie roli użytkownika
+                        //await _userManager.AddToRoleAsync(user, "User");
 
-                        using var response = await httpClient.PostAsync($"{_restpath}", content);
-                        if (response.IsSuccessStatusCode)
+                        string _restpath = GetHostUrl().Content + "User";
+
+                        System.Diagnostics.Debug.WriteLine(user.Id);
+
+                        UserVM userVM = new UserVM()
                         {
-                            //Przekierowanie na strone główną
-                            return RedirectToAction("Index", "Home");
-                        }
-                        else
+                            UserId = user.Id,
+                            Forename = registerVM.Forename,
+                            Surname = registerVM.Surname,
+                            Email = registerVM.Email,
+                            Phonenumber = registerVM.Phonenumber,
+                            BornDate = registerVM.BornDate,
+                        };
+                    
+                        try
                         {
-                            //Błąd przy rejestracji użytkownika
+                            using var httpClient = new HttpClient();
+                            string jsonString = System.Text.Json.JsonSerializer.Serialize(userVM);
+                            var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+
+                            using var response = await httpClient.PostAsync($"{_restpath}", content);
+                            if (response.IsSuccessStatusCode)
+                            {
+                                //Przekierowanie na strone główną
+                                System.Diagnostics.Debug.WriteLine("Utworzono uzytkownika");
+                                return RedirectToAction("Index", "Home");
                         }
-                    }
-                    catch (Exception ex)
-                    {
-                        System.Diagnostics.Debug.WriteLine(ex.Message);
-                    }
+                            else
+                            {
+                                //Błąd przy rejestracji użytkownika
+                                System.Diagnostics.Debug.WriteLine("Blad przeslania");
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            System.Diagnostics.Debug.WriteLine(ex.Message);
+                        }
+                    //}
                 }
             }
             return View(registerVM);

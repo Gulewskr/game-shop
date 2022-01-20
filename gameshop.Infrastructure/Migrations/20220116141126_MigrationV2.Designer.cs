@@ -10,7 +10,7 @@ using gameshop.Infrastructure.Repositories;
 namespace gameshop.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220115235428_MigrationV2")]
+    [Migration("20220116141126_MigrationV2")]
     partial class MigrationV2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -577,7 +577,7 @@ namespace gameshop.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("gameshop.Core.Domain.Game", "Game")
+                    b.HasOne("gameshop.Core.Domain.GameByPlatformSpec", "Game")
                         .WithMany()
                         .HasForeignKey("GameID")
                         .OnDelete(DeleteBehavior.Cascade)

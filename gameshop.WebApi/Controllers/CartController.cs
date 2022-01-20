@@ -3,6 +3,7 @@ using gameshop.Infrastructure.DTO;
 using gameshop.Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,6 +44,12 @@ namespace gameshop.WebApi.Controllers
             return Json(z);
         }
 
+        private async Task<int> GetUserCartID(string id)
+        {
+            CartDTO z = await _service.GetUserCart(id);
+            return z.Id;
+        }
+
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] CreateCart cart)
         {
@@ -55,6 +62,20 @@ namespace gameshop.WebApi.Controllers
             });
             return NoContent();
         }
+
+        [HttpPost("AddToCart")]
+        public async Task<IActionResult> Add([FromBody] BuyGame game)
+        {
+            int cartId = await GetUserCartID(game.UserID);
+            await _service.AddOrder(new OrderDTO()
+            {
+                Amount = game.amount,
+                GameID = game.GameID,
+                CartID = cartId,
+            });
+            return NoContent();
+        }
+
 
         [HttpPut("{id}")]
         public async Task<IActionResult> Update([FromBody] CreateCart cart, int id)

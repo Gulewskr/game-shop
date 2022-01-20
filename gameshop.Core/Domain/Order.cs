@@ -12,7 +12,7 @@ namespace gameshop.Core.Domain
         
         public int GameID { get; set; }
         [ForeignKey("GameID")]
-        public Game Game { get; set; }
+        public GameByPlatformSpec Game { get; set; }
 
         public int CartID { get; set; }
         [ForeignKey("CartID")]

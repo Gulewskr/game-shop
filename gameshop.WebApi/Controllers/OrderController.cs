@@ -36,10 +36,10 @@ namespace gameshop.WebApi.Controllers
             return Json(z);
         }
 
-        [HttpGet("filter")]
-        public async Task<IActionResult> GetByCartID(int cartId)
+        [HttpGet("cart-{id}")]
+        public async Task<IActionResult> GetByCartID(int id)
         {
-            IEnumerable<OrderDTO> z = await _service.GetByCartID(cartId);
+            IEnumerable<OrderDeatailDTO> z = await _service.GetByCartID(id);
             return Json(z);
         }
 

@@ -1,0 +1,14 @@
+﻿@model gameshop.WebApplication.Models.OrderVM
+
+<tr>
+    <td class="image" data-title="No"><img src="@Model.Game_ImageURL" alt="GameImage"></td>
+    <td class="product-des" data-title="Description">
+        <p class="product-name"><a href="#">@Model.Game_Name</a></p>
+    </td>
+    <td class="price" data-title="Price"><span>@Model.Platform_Name</span></td>
+    <td class="total-amount" data-title="Total"><span>@Model.Amount</span></td>
+    <td class="action" data-title="Remove">
+        <form asp-action="DeleteOrder" asp-controller="Cart" asp-route-id="@Model.Id" id="deleteOrderF@Model.Id"/>
+        <a href="javascript:document.getElementById('deleteOrderF@Model.Id').submit()"><i class="ti-trash remove-icon"></i></a>
+    </td>
+</tr>

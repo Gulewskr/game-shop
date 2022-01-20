@@ -447,3 +447,13 @@ C:\Studia\PAWiM\GameShop\gameshop.WebApplication\bin\Debug\netcoreapp3.1\Microso
 C:\Studia\PAWiM\GameShop\gameshop.WebApplication\obj\Debug\netcoreapp3.1\gameshop.WebApplication.MvcApplicationPartsAssemblyInfo.cs
 C:\Studia\PAWiM\GameShop\gameshop.WebApplication\obj\Debug\netcoreapp3.1\Razor\Views\Partial\SingleGameBanner.cshtml.g.cs
 C:\Studia\PAWiM\GameShop\gameshop.WebApplication\obj\Debug\netcoreapp3.1\Razor\Views\Partial\SingleGameMainBanner.cshtml.g.cs
+C:\Studia\PAWiM\GameShop\gameshop.WebApplication\obj\Debug\netcoreapp3.1\Razor\Views\Cart\UserCart.cshtml.g.cs
+C:\Studia\PAWiM\GameShop\gameshop.WebApplication\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+C:\Studia\PAWiM\GameShop\gameshop.WebApplication\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+C:\Studia\PAWiM\GameShop\gameshop.WebApplication\bin\Debug\netcoreapp3.1\NWebsec.AspNetCore.Core.dll
+C:\Studia\PAWiM\GameShop\gameshop.WebApplication\bin\Debug\netcoreapp3.1\NWebsec.AspNetCore.Mvc.dll
+C:\Studia\PAWiM\GameShop\gameshop.WebApplication\bin\Debug\netcoreapp3.1\NWebsec.AspNetCore.Mvc.TagHelpers.dll
+C:\Studia\PAWiM\GameShop\gameshop.WebApplication\bin\Debug\netcoreapp3.1\WebEssentials.AspNetCore.Pwa.dll
+C:\Studia\PAWiM\GameShop\gameshop.WebApplication\obj\Debug\netcoreapp3.1\Razor\Views\Game\DetailsShop.cshtml.g.cs
+C:\Studia\PAWiM\GameShop\gameshop.WebApplication\obj\Debug\netcoreapp3.1\Razor\Views\Partial\GameByPlatBuying.cshtml.g.cs
+C:\Studia\PAWiM\GameShop\gameshop.WebApplication\obj\Debug\netcoreapp3.1\Razor\Views\Order\OrderRowTable.cshtml.g.cs

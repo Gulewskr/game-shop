@@ -1,4 +1,5 @@
 ﻿using gameshop.WebApplication.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
@@ -15,11 +16,13 @@ namespace gameshop.WebApplication.Controllers
     public class GameController : Controller
     {
         public IConfiguration Configuration;
+        private readonly UserManager<IdentityUser> _userManager;
         private readonly JWTOKEN TokenService;
-        public GameController(IConfiguration configuration, JWTOKEN _token)
+        public GameController(IConfiguration configuration, JWTOKEN _token, UserManager<IdentityUser> userManager)
         {
             Configuration = configuration;
             TokenService = _token;
+            _userManager = userManager;
         }
 
         public ContentResult GetHostUrl()
@@ -144,6 +147,71 @@ namespace gameshop.WebApplication.Controllers
             return View(ob);
         }
 
+        public async Task<IActionResult> DetailsShop(int id)
+        {
+            string _restpath = GetHostUrl().Content + CN();
+            var token = TokenService.GenerateJSONWebToken();
+
+            GameVM ob = new GameVM();
+
+            using (var httpClient = new HttpClient())
+            {
+                httpClient.DefaultRequestHeaders.Clear();
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                using (var response = await httpClient.GetAsync($"{_restpath}/{id}"))
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    ob = JsonConvert.DeserializeObject<GameVM>(apiResponse);
+                }
+            }
+            List<PlatformVM> platforms = await StaticPublicRequests.GetPlatforms();
+            ViewBag.Platforms = platforms;
+            List<GameByPlat> gbp = await GetGames(id);
+            ViewBag.GamesByPlat = gbp;
+            ViewBag.Test = "????";
+            foreach (GameByPlat g in gbp) Console.WriteLine(g.PlatformID);
+            foreach (PlatformVM g in platforms) Console.WriteLine(g.Id);
+            return View(ob);
+        }
+
+        public async Task<IActionResult> BuyGame(GameByPlat o, int amount)
+        {
+            string _restpath = GetHostUrl().Content + "Cart/AddToCart";
+            var token = TokenService.GenerateJSONWebToken();
+
+            try
+            {
+                var user = await _userManager.GetUserAsync(User);
+                using (var httpClient = new HttpClient())
+                {
+                    httpClient.DefaultRequestHeaders.Clear();
+                    httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                    BuyGame ob = new BuyGame()
+                    {
+                        amount = amount,
+                        GameID = o.Id,
+                        UserID = user.Id
+                    };
+
+                    string jsonString = System.Text.Json.JsonSerializer.Serialize(ob);
+                    var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+                    using (var response = await httpClient.PostAsync($"{_restpath}", content))
+                    {
+                        string apiResponse = await response.Content.ReadAsStringAsync();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(_restpath);
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+            }
+
+            return RedirectToAction("DetailsShop", new { id = o.GameID });
+        }
+
         public async Task<IActionResult> Delete(int id)
         {
             string _restpath = GetHostUrl().Content + CN();
@@ -239,7 +307,7 @@ namespace gameshop.WebApplication.Controllers
         }
 
         [HttpPost]
-        public async void AddGames(GameByPlat o)
+        public async Task<IActionResult> AddGames(GameByPlat o)
         {
             string _restpath = GetHostUrl().Content + "GamePlatform";
             var token = TokenService.GenerateJSONWebToken();
@@ -265,7 +333,7 @@ namespace gameshop.WebApplication.Controllers
                 System.Diagnostics.Debug.WriteLine(ex.Message);
             }
 
-            //return Server.TransferRequest(Request.Url.AbsolutePath, false); ;
+            return RedirectToAction(nameof(Index));
         }
     }
 }

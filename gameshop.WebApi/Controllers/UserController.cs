@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 
 namespace gameshop.WebApi.Controllers
 {
-    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class UserController : Controller
@@ -22,13 +21,15 @@ namespace gameshop.WebApi.Controllers
             _service = service;
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
             IEnumerable<UserDTO> z = await _service.GetAll();
             return Json(z);
         }
-
+        
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
@@ -39,7 +40,7 @@ namespace gameshop.WebApi.Controllers
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] CreateUser user)
         {
-            Console.WriteLine(user.UserId);
+            System.Diagnostics.Debug.WriteLine(user.UserId);
             await _service.Add(new UserDTO()
             {
                 UserId = user.UserId,
@@ -52,6 +53,7 @@ namespace gameshop.WebApi.Controllers
             return NoContent();
         }
 
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> Update([FromBody] CreateUser user, int id)
         {
@@ -68,6 +70,7 @@ namespace gameshop.WebApi.Controllers
             return NoContent();
         }
 
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {

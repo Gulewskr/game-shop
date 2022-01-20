@@ -1,0 +1,35 @@
+﻿@model gameshop.WebApplication.Models.GameByPlat
+<div>
+    <div class="image" data-title="No"><img src="@ViewData["PlatformImage"]" alt="@ViewData["PlatformName"]"></div>
+    <div class="product-des" data-title="Description">
+        <p class="product-name">@ViewData["PlatformName"]</p>
+        <p class="product-des">@ViewData["GameName"]</p>
+    </div>
+    <div class="price" data-title="Price"><span>@(Model.AmountEnable - Model.AmountReserved)</span></div>
+    <form asp-controller="Game" asp-action="BuyGame">
+        <div class="qty" data-title="Qty">
+            <input hidden="hidden" asp-for="Id" value="@Model.Id" />
+            <input hidden="hidden" asp-for="GameID" value="@Model.GameID" />
+            <div class="input-group">
+                <!--
+                <div class="button minus">
+                    <button type="button" class="btn btn-primary btn-number" disabled="disabled" data-type="minus" data-field="amount">
+                        <i class="ti-minus"></i>
+                    </button>
+                </div>
+                -->
+                <input type="number" id="@Model.Id" name="amount" class="input-number" data-min="1" data-max="100" value="1">
+                <!--
+                <div class="button plus">
+                    <button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="amount">
+                        <i class="ti-plus"></i>
+                    </button>
+                </div>
+                -->
+            </div>
+        </div>
+        <div class="action" data-title="Remove">
+            <input type="submit" value="ADD TO CART" class="btn btn-primary"/>
+        </div>
+    </form>
+</div>
