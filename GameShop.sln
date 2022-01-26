@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gameshop.WebApi", "gameshop
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gameshop.WebApplication", "gameshop.WebApplication\gameshop.WebApplication.csproj", "{0A4C1619-1B15-4FE9-9A95-1B6177E27447}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplicationBlazor", "WebApplicationBlazor\WebApplicationBlazor.csproj", "{669BD441-5709-4705-BE3E-D7FA1F3058B3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,18 @@ Global
 		{0A4C1619-1B15-4FE9-9A95-1B6177E27447}.Release|x64.Build.0 = Release|Any CPU
 		{0A4C1619-1B15-4FE9-9A95-1B6177E27447}.Release|x86.ActiveCfg = Release|Any CPU
 		{0A4C1619-1B15-4FE9-9A95-1B6177E27447}.Release|x86.Build.0 = Release|Any CPU
+		{669BD441-5709-4705-BE3E-D7FA1F3058B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{669BD441-5709-4705-BE3E-D7FA1F3058B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{669BD441-5709-4705-BE3E-D7FA1F3058B3}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{669BD441-5709-4705-BE3E-D7FA1F3058B3}.Debug|x64.Build.0 = Debug|Any CPU
+		{669BD441-5709-4705-BE3E-D7FA1F3058B3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{669BD441-5709-4705-BE3E-D7FA1F3058B3}.Debug|x86.Build.0 = Debug|Any CPU
+		{669BD441-5709-4705-BE3E-D7FA1F3058B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{669BD441-5709-4705-BE3E-D7FA1F3058B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{669BD441-5709-4705-BE3E-D7FA1F3058B3}.Release|x64.ActiveCfg = Release|Any CPU
+		{669BD441-5709-4705-BE3E-D7FA1F3058B3}.Release|x64.Build.0 = Release|Any CPU
+		{669BD441-5709-4705-BE3E-D7FA1F3058B3}.Release|x86.ActiveCfg = Release|Any CPU
+		{669BD441-5709-4705-BE3E-D7FA1F3058B3}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

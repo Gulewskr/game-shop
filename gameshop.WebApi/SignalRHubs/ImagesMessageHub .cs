@@ -1,0 +1,16 @@
+﻿using Microsoft.AspNetCore.SignalR;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace gameshop.WebApi.SignalRHubs
+{
+    public class ImagesMessageHub : Hub
+    {
+        public Task ImageMessage(ImageMessage file)
+        {
+            return Clients.All.SendAsync("ImageMessage", file);
+        }
+    }
+}

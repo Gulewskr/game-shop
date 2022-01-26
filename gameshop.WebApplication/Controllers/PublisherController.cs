@@ -144,7 +144,6 @@ namespace gameshop.WebApplication.Controllers
         {
             string _restpath = GetHostUrl().Content + CN();
             var token = TokenService.GenerateJSONWebToken();
-            List<CompanyVM> list = new List<CompanyVM>();
 
             CompanyVM ob = new CompanyVM();
 
@@ -154,7 +153,7 @@ namespace gameshop.WebApplication.Controllers
                 {
                     httpClient.DefaultRequestHeaders.Clear();
                     httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-                    string jsonString = System.Text.Json.JsonSerializer.Serialize(o);
+                    var jsonString = System.Text.Json.JsonSerializer.Serialize(o);
                     var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
                     using (var response = await httpClient.PostAsync($"{_restpath}", content))
                     {

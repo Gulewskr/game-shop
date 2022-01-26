@@ -13,5 +13,6 @@ namespace gameshop.WebApplication.Models
         public int CategoryID { get; set; }
         public int PublisherID { get; set; }
         public int DeveloperID { get; set; }
+        public string ImageURL { get; set; }
     }
 }

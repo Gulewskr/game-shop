@@ -18,13 +18,14 @@
     <section class="hero-slider">
         <!-- Single Slider -->
         <div class="single-slider">
+            <img style="position: absolute; transform: translate(-50%, 0); max-height:500px" src="@games[0].ImageURL" />
             <div class="container">
                 <div class="row no-gutters">
                     <div class="col-lg-9 offset-lg-3 col-12">
                         <div class="text-inner">
                             <div class="row">
                                 <div class="col-lg-7 col-12">
-                                    <div class="hero-text">
+                                    <div class="hero-text"  style="background: rgba(255,255,255,0.75); padding: 5px">
                                         <h1><span>TEST NEWEST GAME</span>@games[0].Name</h1>
                                         <p>@games[0].Description.Substring(0, 100) ...</p>
                                         <div class="button">
@@ -42,27 +43,27 @@
     </section>
     <!--/ End Slider Area -->
 }
-@if( games != null && games.Count > 0)
+@if( games != null && games.Count > 4)
 {
     <section class="small-banner section">
         <div class="container-fluid">
             <div class="row">
-                @await Html.PartialAsync("~/Views/Partial/SingleGameMainBanner.cshtml", games[0], new ViewDataDictionary(ViewData)
+                @await Html.PartialAsync("~/Views/Partial/SingleGameMainBanner.cshtml", games[1], new ViewDataDictionary(ViewData)
                         {
-                            { "Category", categories.FirstOrDefault(x => x.Id == games[0].CategoryID).Name },
-                            { "Developer", developers.FirstOrDefault(x => x.Id == games[0].DeveloperID).Name },
+                            { "Category", categories.FirstOrDefault(x => x.Id == games[1].CategoryID).Name },
+                            { "Developer", developers.FirstOrDefault(x => x.Id == games[1].DeveloperID).Name },
                             //{ "Publisher", publishers.FirstOrDefault(x => x.Id == games[0].PublisherID).Name },
                         })
-                @await Html.PartialAsync("~/Views/Partial/SingleGameMainBanner.cshtml", games[0], new ViewDataDictionary(ViewData)
+                @await Html.PartialAsync("~/Views/Partial/SingleGameMainBanner.cshtml", games[2], new ViewDataDictionary(ViewData)
                         {
-                            { "Category", categories.FirstOrDefault(x => x.Id == games[0].CategoryID).Name },
-                            { "Developer", developers.FirstOrDefault(x => x.Id == games[0].DeveloperID).Name },
+                            { "Category", categories.FirstOrDefault(x => x.Id == games[2].CategoryID).Name },
+                            { "Developer", developers.FirstOrDefault(x => x.Id == games[2].DeveloperID).Name },
                             //{ "Publisher", publishers.FirstOrDefault(x => x.Id == games[0].PublisherID).Name },
                         })
-                @await Html.PartialAsync("~/Views/Partial/SingleGameMainBanner.cshtml", games[0], new ViewDataDictionary(ViewData)
+                @await Html.PartialAsync("~/Views/Partial/SingleGameMainBanner.cshtml", games[3], new ViewDataDictionary(ViewData)
                         {
-                            { "Category", categories.FirstOrDefault(x => x.Id == games[0].CategoryID).Name },
-                            { "Developer", developers.FirstOrDefault(x => x.Id == games[0].DeveloperID).Name },
+                            { "Category", categories.FirstOrDefault(x => x.Id == games[3].CategoryID).Name },
+                            { "Developer", developers.FirstOrDefault(x => x.Id == games[3].DeveloperID).Name },
                             //{ "Publisher", publishers.FirstOrDefault(x => x.Id == games[0].PublisherID).Name },
                         })
             </div>
@@ -93,8 +94,8 @@
                                     {
                                         @await Html.PartialAsync("~/Views/Partial/SingleGameBanner.cshtml", game, new ViewDataDictionary(ViewData)
                                         {
-                                            { "Category", categories.FirstOrDefault(x => x.Id == game.CategoryID).Name },
-                                            { "Developer", developers.FirstOrDefault(x => x.Id == game.DeveloperID).Name },
+                                            { "Category", categories.FirstOrDefault(x => x.Id == game.CategoryID) == null ? "-" :  categories.FirstOrDefault(x => x.Id == game.CategoryID).Name },
+                                            { "Developer", developers.FirstOrDefault(x => x.Id == game.DeveloperID) == null ? "-" :  developers.FirstOrDefault(x => x.Id == game.DeveloperID).Name },
                                             //{ "Publisher", publishers.FirstOrDefault(x => x.Id == games[0].PublisherID).Name },
                                         })
                                     }

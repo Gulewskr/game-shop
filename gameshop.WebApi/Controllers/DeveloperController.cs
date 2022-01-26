@@ -1,10 +1,13 @@
 ﻿using gameshop.Infrastructure.Commands;
 using gameshop.Infrastructure.DTO;
 using gameshop.Infrastructure.Services;
+using gameshop.Infrastructure.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -40,13 +43,15 @@ namespace gameshop.WebApi.Controllers
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] CreateCompany developer)
         {
+            //string imgUrl = await _serviceImages.UploadFiles(developer.File, Path.Combine(Directory.GetCurrentDirectory(), "Images"));
             await _developerService.Add(new DeveloperDTO()
             {
                 Name = developer.Name,
                 EMail = developer.EMail,
                 Country = developer.Country,
                 City = developer.City,
-                Address = developer.Address
+                Address = developer.Address,
+                ImageURL = developer.ImageURL
             });
             return NoContent();
         }

@@ -2,20 +2,24 @@ using gameshop.Core.Domain;
 using gameshop.Core.Repositories;
 using gameshop.Infrastructure.Repositories;
 using gameshop.Infrastructure.Services;
+using gameshop.Infrastructure.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -51,6 +55,19 @@ namespace gameshop.WebApi
                 };
             });
 
+            var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+            services.AddCors(options =>
+            {
+                options.AddPolicy(MyAllowSpecificOrigins,
+                          builder =>
+                          {
+                              builder.WithOrigins("https://localhost:44355",
+                                                   "http://localhost:44355")
+                                                  .AllowAnyHeader()
+                                                  .AllowAnyMethod();
+                          });
+            });
+
             services.AddControllers();
             //Category
             services.AddScoped<ICategoryRepository, CategoryRepository>();
@@ -78,6 +95,8 @@ namespace gameshop.WebApi
             //Users
             services.AddScoped<IUsersRepository, UserRepository>();
             services.AddScoped<IUserService, UserService>();
+            //Images
+            services.AddScoped<IImageService, ImageService>();
 
             //services.AddMvc();
             services.AddDbContext<AppDbContext>(
@@ -86,10 +105,10 @@ namespace gameshop.WebApi
                     options.UseSqlServer(Configuration.GetConnectionString("GameShopConnectionString"));
                 }
             );
-            /*
-                services.AddIdentity<IdentityUser, IdentityRole>()
-                    .AddUserStore<AppDbContext>();
-            */
+            //services.AddIdentity<IdentityUser, IdentityRole>()
+            //       .AddUserStore<AppDbContext>();
+            //services.AddSignalR();
+
             services.AddSwaggerGen(c => {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "GameShop.WebAPI", Version = "v1" });
             });
@@ -105,6 +124,26 @@ namespace gameshop.WebApi
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "GameShop.WebAPI v1"));
             }
 
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+                    Path.Combine(Directory.GetCurrentDirectory(), "Images")),
+                RequestPath = "/Images"
+            });
+            /*Enable directory browsing
+            app.UseDirectoryBrowser(new DirectoryBrowserOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+                            Path.Combine(Directory.GetCurrentDirectory(), "Uplodaed_Documents")),
+                RequestPath = "/Uplodaed_Documents"
+            });
+            app.UseDirectoryBrowser(new DirectoryBrowserOptions()
+            {
+                FileProvider = new PhysicalFileProvider(
+                    Path.Combine(Directory.GetCurrentDirectory(), "Images")),
+                RequestPath = "/Images"
+            });
+            */
             app.UseHttpsRedirection();
 
             app.UseAuthentication();
@@ -117,6 +156,7 @@ namespace gameshop.WebApi
             {
                 endpoints.MapControllers();
             });
+
         }
     }
 }

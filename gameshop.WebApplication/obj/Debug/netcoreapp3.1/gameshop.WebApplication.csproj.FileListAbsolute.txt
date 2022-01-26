@@ -208,7 +208,6 @@ C:\Studia\PAWiM\GameShop\gameshop.WebApplication\bin\Debug\netcoreapp3.1\refs\Mi
 C:\Studia\PAWiM\GameShop\gameshop.WebApplication\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Http.Connections.dll
 C:\Studia\PAWiM\GameShop\gameshop.WebApplication\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Http.dll
 C:\Studia\PAWiM\GameShop\gameshop.WebApplication\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Http.Extensions.dll
-C:\Studia\PAWiM\GameShop\gameshop.WebApplication\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Http.Features.dll
 C:\Studia\PAWiM\GameShop\gameshop.WebApplication\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.HttpOverrides.dll
 C:\Studia\PAWiM\GameShop\gameshop.WebApplication\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.HttpsPolicy.dll
 C:\Studia\PAWiM\GameShop\gameshop.WebApplication\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Identity.dll
@@ -336,7 +335,6 @@ C:\Studia\PAWiM\GameShop\gameshop.WebApplication\bin\Debug\netcoreapp3.1\refs\Sy
 C:\Studia\PAWiM\GameShop\gameshop.WebApplication\bin\Debug\netcoreapp3.1\refs\System.IO.FileSystem.Watcher.dll
 C:\Studia\PAWiM\GameShop\gameshop.WebApplication\bin\Debug\netcoreapp3.1\refs\System.IO.IsolatedStorage.dll
 C:\Studia\PAWiM\GameShop\gameshop.WebApplication\bin\Debug\netcoreapp3.1\refs\System.IO.MemoryMappedFiles.dll
-C:\Studia\PAWiM\GameShop\gameshop.WebApplication\bin\Debug\netcoreapp3.1\refs\System.IO.Pipelines.dll
 C:\Studia\PAWiM\GameShop\gameshop.WebApplication\bin\Debug\netcoreapp3.1\refs\System.IO.Pipes.dll
 C:\Studia\PAWiM\GameShop\gameshop.WebApplication\bin\Debug\netcoreapp3.1\refs\System.IO.UnmanagedMemoryStream.dll
 C:\Studia\PAWiM\GameShop\gameshop.WebApplication\bin\Debug\netcoreapp3.1\refs\System.Linq.dll
@@ -376,7 +374,6 @@ C:\Studia\PAWiM\GameShop\gameshop.WebApplication\bin\Debug\netcoreapp3.1\refs\Sy
 C:\Studia\PAWiM\GameShop\gameshop.WebApplication\bin\Debug\netcoreapp3.1\refs\System.Resources.Reader.dll
 C:\Studia\PAWiM\GameShop\gameshop.WebApplication\bin\Debug\netcoreapp3.1\refs\System.Resources.ResourceManager.dll
 C:\Studia\PAWiM\GameShop\gameshop.WebApplication\bin\Debug\netcoreapp3.1\refs\System.Resources.Writer.dll
-C:\Studia\PAWiM\GameShop\gameshop.WebApplication\bin\Debug\netcoreapp3.1\refs\System.Runtime.CompilerServices.Unsafe.dll
 C:\Studia\PAWiM\GameShop\gameshop.WebApplication\bin\Debug\netcoreapp3.1\refs\System.Runtime.CompilerServices.VisualC.dll
 C:\Studia\PAWiM\GameShop\gameshop.WebApplication\bin\Debug\netcoreapp3.1\refs\System.Runtime.dll
 C:\Studia\PAWiM\GameShop\gameshop.WebApplication\bin\Debug\netcoreapp3.1\refs\System.Runtime.Extensions.dll
@@ -457,3 +454,6 @@ C:\Studia\PAWiM\GameShop\gameshop.WebApplication\bin\Debug\netcoreapp3.1\WebEsse
 C:\Studia\PAWiM\GameShop\gameshop.WebApplication\obj\Debug\netcoreapp3.1\Razor\Views\Game\DetailsShop.cshtml.g.cs
 C:\Studia\PAWiM\GameShop\gameshop.WebApplication\obj\Debug\netcoreapp3.1\Razor\Views\Partial\GameByPlatBuying.cshtml.g.cs
 C:\Studia\PAWiM\GameShop\gameshop.WebApplication\obj\Debug\netcoreapp3.1\Razor\Views\Order\OrderRowTable.cshtml.g.cs
+C:\Studia\PAWiM\GameShop\gameshop.WebApplication\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Http.Features.dll
+C:\Studia\PAWiM\GameShop\gameshop.WebApplication\bin\Debug\netcoreapp3.1\System.IO.Pipelines.dll
+C:\Studia\PAWiM\GameShop\gameshop.WebApplication\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll

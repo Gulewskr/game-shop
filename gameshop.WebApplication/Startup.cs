@@ -29,7 +29,18 @@ namespace gameshop.WebApplication
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<JWTOKEN>();
-
+            var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+            services.AddCors(options =>
+            {
+                options.AddPolicy(MyAllowSpecificOrigins,
+                          builder =>
+                          {
+                              builder.WithOrigins("http://localhost:5000",
+                                                   "https://localhost:5001")
+                                                  .AllowAnyHeader()
+                                                  .AllowAnyMethod();
+                          });
+            });
 
             services.AddControllersWithViews();
             services.AddMvc().AddRazorRuntimeCompilation();

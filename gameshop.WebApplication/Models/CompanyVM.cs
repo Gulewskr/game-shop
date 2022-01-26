@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,5 +14,6 @@ namespace gameshop.WebApplication.Models
         public string City { get; set; }
         public string Address { get; set; }
         public string EMail { get; set; }
-    }
+        public string ImageURL { get; set; }
+}
 }

@@ -46,7 +46,8 @@ namespace gameshop.WebApi.Controllers
                 EMail = publisher.EMail,
                 Country = publisher.Country,
                 City = publisher.City,
-                Address = publisher.Address
+                Address = publisher.Address,
+                ImageURL = publisher.ImageURL
             });
             return NoContent();
         }

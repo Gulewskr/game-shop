@@ -46,7 +46,8 @@ namespace gameshop.WebApi.Controllers
                 Description = game.Description,
                 CategoryID = game.CategoryID,
                 DeveloperID = game.DeveloperID,
-                PublisherID = game.PublisherID
+                PublisherID = game.PublisherID,
+                ImageURL = game.ImageURL
             });
             return NoContent();
         }
