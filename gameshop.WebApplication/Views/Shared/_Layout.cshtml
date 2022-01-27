@@ -233,7 +233,7 @@
                                                     <a asp-area="" asp-controller="Developer" asp-action="Index">Developers</a>
                                                 </li>
                                                 <li>
-                                                    <a href="#">Publishers</a>
+                                                    <a asp-area="" asp-controller="Publisher" asp-action="Index">Publishers</a>
                                                 </li>
                                                 @{
                                                     if (User.IsInRole("Admin"))
@@ -242,19 +242,19 @@
                                                             <a href="#">Admin<i class="ti-angle-down"></i><span class="new">Admin</span></a>
                                                             <ul class="dropdown">
                                                                 <li>
-                                                                    <a asp-area="" asp-controller="Category" asp-action="Index">Categories</a>
+                                                                    <a asp-area="" asp-controller="Category" asp-action="Index">Edit Categories</a>
                                                                 </li>
                                                                 <li>
-                                                                    <a asp-area="" asp-controller="Platform" asp-action="Index">Platforms</a>
+                                                                    <a asp-area="" asp-controller="Platform" asp-action="Index">Edit Platforms</a>
                                                                 </li>
                                                                 <li>
-                                                                    <a asp-area="" asp-controller="Developer" asp-action="Index">Developers</a>
+                                                                    <a asp-area="" asp-controller="Developer" asp-action="Index">Edit Developers</a>
                                                                 </li>
                                                                 <li>
-                                                                    <a asp-area="" asp-controller="Publisher" asp-action="Index">Publishers</a>
+                                                                    <a asp-area="" asp-controller="Publisher" asp-action="Index">Edit Publishers</a>
                                                                 </li>
                                                                 <li>
-                                                                    <a asp-area="" asp-controller="Game" asp-action="Index">Games</a>
+                                                                    <a asp-area="" asp-controller="Game" asp-action="Index">Edit Games</a>
                                                                 </li>
                                                             </ul>
                                                         </li>
@@ -275,7 +275,7 @@
     </header>
     <!--/ End Header -->
     <div class="container body-container">
-        <main role="main" class="pb-3">
+        <main role="main" class="pb-3" style="padding-left: 15px; padding-right: 15px">
             @RenderBody()
         </main>
         <style>

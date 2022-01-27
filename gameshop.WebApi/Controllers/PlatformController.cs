@@ -43,7 +43,7 @@ namespace gameshop.WebApi.Controllers
             await _service.Add(new PlatformDTO()
             {
                 Name = platform.Name,
-                ImgSrc = platform.ImageURL
+                ImageURL = platform.ImageURL
             });
             return NoContent();
         }
@@ -56,7 +56,7 @@ namespace gameshop.WebApi.Controllers
             {
                 Id = id,
                 Name = platform.Name,
-                ImgSrc = platform.ImageURL
+                ImageURL = platform.ImageURL
             });
             return NoContent();
         }

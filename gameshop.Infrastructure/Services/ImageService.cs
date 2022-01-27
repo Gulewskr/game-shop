@@ -14,7 +14,6 @@ namespace gameshop.Infrastructure.Services
         private static Random random = new Random();
         public async Task<string> UploadFiles(IFormFile file, string pathToSave)
         {
-            //var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), "../GImages");
             if (file.Length > 0)
             {
                 var fileName = RandomString(48) + ".png";
@@ -25,7 +24,6 @@ namespace gameshop.Infrastructure.Services
                 {
                     await file.CopyToAsync(fs);
                 }
-                //await _hubContext.Clients.All.SendAsync("Image", dbPath);
                 return dbPath;
             }
             return null;

@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace gameshop.WebApi.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class ImagesUploadController : Controller
@@ -20,7 +21,6 @@ namespace gameshop.WebApi.Controllers
             _serviceImages = service2;
         }
         
-        //[Authorize]
         [HttpPost]
         public async Task<IActionResult> Add(IFormFile image)
         {

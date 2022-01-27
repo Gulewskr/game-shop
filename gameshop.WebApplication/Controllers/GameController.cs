@@ -59,6 +59,32 @@ namespace gameshop.WebApplication.Controllers
 
             return View(list);
         }
+
+        public async Task<IActionResult> GameFilter(int PlatformID, int CategoryID)
+        {
+            string _restpath = GetHostUrl().Content + CN();
+
+            var token = TokenService.GenerateJSONWebToken();
+            List<GameVM> list = new List<GameVM>();
+
+            using (var httpClient = new HttpClient())
+            {
+                httpClient.DefaultRequestHeaders.Clear();
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                System.Diagnostics.Debug.WriteLine(httpClient.DefaultRequestHeaders);
+                using (var response = await httpClient.GetAsync($"{_restpath}?plat={PlatformID}&cat={CategoryID}"))
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    list = JsonConvert.DeserializeObject<List<GameVM>>(apiResponse);
+
+                    System.Diagnostics.Debug.WriteLine(response.StatusCode);
+                }
+            }
+
+            return View(list);
+        }
+
         public async Task<IActionResult> Edit(int id)
         {
             string _restpath = GetHostUrl().Content + CN();

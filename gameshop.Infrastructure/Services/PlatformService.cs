@@ -22,7 +22,7 @@ namespace gameshop.Infrastructure.Services
             await platformRepository.AddAsync(new Platform()
             {
                 Name = platform.Name,
-                ImageURL = platform.ImgSrc
+                ImageURL = platform.ImageURL
             });
             return;
         }
@@ -41,7 +41,7 @@ namespace gameshop.Infrastructure.Services
             {
                 Id = z.Id,
                 Name = z.Name,
-                ImgSrc = z.ImageURL
+                ImageURL = z.ImageURL
             };
         }
 
@@ -52,7 +52,7 @@ namespace gameshop.Infrastructure.Services
             {
                 Id = platform.Id,
                 Name = platform.Name,
-                ImgSrc = platform.ImageURL
+                ImageURL = platform.ImageURL
             });
         }
 
@@ -63,7 +63,7 @@ namespace gameshop.Infrastructure.Services
             {
                 Id = platform.Id,
                 Name = platform.Name,
-                ImageURL = platform.ImgSrc
+                ImageURL = platform.ImageURL
             });
             return;
         }
