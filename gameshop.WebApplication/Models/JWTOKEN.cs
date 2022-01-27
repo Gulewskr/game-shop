@@ -28,13 +28,13 @@ namespace gameshop.WebApplication.Models
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes($"{SecretKey}"));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+            
             var token = new JwtSecurityToken(
                 issuer: $"{TokenUrl}",
                 audience: $"{TokenUrl}",
                 expires: DateTime.Now.AddHours(3),
                 signingCredentials: credentials
-                //claims: claims
-                );
+            );
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
